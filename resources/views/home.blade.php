@@ -93,21 +93,21 @@
         <!-- //header -->
         <!-- banner-text -->
         <div class="banner-text">
-            <h2>FABULOUS FOOD AT AFFORDABLE PRICES!</h2>
+            <h2>DELICIOUSNESS JUMPING INTO THE MOUTH!</h2>
             <div class="book-form">
-                <p>Reserve a table.</p>
+                <p>ĐẶT TIỆC NGAY</p>
                 <form action="#" method="post">
                     <div class="col-md-3 form-time-w3layouts">
-                        <label><i class="fa fa-clock-o" aria-hidden="true"></i> Time :</label>
+                        <label><i class="fa fa-clock-o" aria-hidden="true"></i> Giờ :</label>
                         <input type="time">
                     </div>
                     <div class="col-md-3 form-date-w3-agileits">
-                        <label><i class="fa fa-calendar" aria-hidden="true"></i> Date :</label>
+                        <label><i class="fa fa-calendar" aria-hidden="true"></i> Ngày :</label>
                         <input id="datepicker1" name="Text" type="text" value="mm/dd/yyyy" onfocus="this.value = '';"
                                onblur="if (this.value == '') {this.value = 'mm/dd/yyyy';}" required="">
                     </div>
                     <div class="col-md-3 form-left-agileits-w3layouts ">
-                        <label><i class="fa fa-users" aria-hidden="true"></i> No.of People :</label>
+                        <label><i class="fa fa-users" aria-hidden="true"></i> Số lượng người :</label>
                         <select class="form-control">
                             <option></option>
                             <option>1 Person</option>
@@ -119,7 +119,7 @@
                         </select>
                     </div>
                     <div class="col-md-3 form-left-agileits-submit">
-                        <input type="submit" value="Book a table">
+                        <input type="submit" value="ĐẶT TIỆC">
                     </div>
                 </form>
             </div>
@@ -173,12 +173,9 @@
     <!-- //banner -->
     <div class="ab-w3l-about">
         <div class="container">
-            <h3 class="tittle-w3"><span>Welcome to Our</span> FOOD PARADISE</h3>
-            <p class="para-w3l">Lorem Ipsum is simply dummy text of the printing and typesetting industry. ever since
-                the 1500s.Itaque earum rerum hic tenetur a sapiente delectus reiciendis maiores hasellusMaecenas ac
-                hendrerit purus. Lorem ipsum dolor sit amet.Lorem Ipsum is simply dummy text of the printing and
-                typesetting industry
-            <p><a class="read" href="single.html">Read More</a></p>
+            <h3 class="tittle-w3"><span>CHÀO MỪNG ĐẾN VỚI</span> FOOD PARADISE</h3>
+            <p class="para-w3l">Food Paradise là một trung tâm hội nghị hàng đầu với lối kiến trúc sang trọng, tinh tế, những tiêu chuẩn đẳng cấp cùng chất lượng dịch vụ chuyên nghiệp bậc nhất tại Thành Phố Hồ Chí Minh. Tổng diện tích sử dụng trên 6,500 mét vuông mang lại cho Food Paradise không gian mở rộng rãi, phù hợp nhiều loại hình hội nghị, sự kiện khác nhau. Cho dù bạn tổ chức một cuộc họp hội đồng quản trị cho 30 người hay Đại hội cổ đông cho 3.500 người hoặc một bữa tiệc cho 3.000 khách mời, Trung tâm hội nghị Food Paradise luôn sẵn sàng phục vụ và đáp ứng tốt nhất các yêu cầu của bạn để cùng mang đến thành công tốt đẹp.
+            <p><a class="read" href="single.html">ĐỌC THÊM</a></p>
         </div>
     </div>
     <div class="about" id="about">
