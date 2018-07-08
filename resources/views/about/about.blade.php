@@ -23,6 +23,7 @@
                     <li><i class="fa fa-envelope" aria-hidden="true"></i><a href="mailto:foodparadise@gmail.com">foodparadise@gmail.com</a>
                     </li>
                     <li><i class="fa fa-phone" aria-hidden="true"></i>+84 969 938 946</li>
+                    <li><a href="#"><i class="fa fa-opencart"></i></a></li>
                     <li>
                         <div class="search">
                             <input class="search_box" type="checkbox" id="search_box">
@@ -125,7 +126,7 @@
                     </div>
                 </div>
                 <div class="col-md-5 ab-text">
-                    <h3 class="tittle-w3"><span>A brief history of </span>about us</h3>
+                    <h3 class="tittle-w3"><span>A brief history of </span>VỀ CHÚNG TÔI</h3>
                     <p>Etiam quis quam auctor, cursus ipsum a, placerat dui. Aliquam erat volutpat. Donec bibendum
                         viverra commodo. Morbi erat est, fringilla id sollicitudin sed, hendrerit nec est. Fusce maximus
                         scelerisque turpis vel tempus

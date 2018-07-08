@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 	<link rel="shortcut icon" href="{{URL::asset('images/icon.png')}}">
-	<title>The Palace | @yield('title')</title>
+	<title>Food Paradise | @yield('title')</title>
 	<!-- for-mobile-apps -->
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>

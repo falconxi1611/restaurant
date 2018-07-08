@@ -19,11 +19,14 @@
             </div>
             <div class="contact-bnr-w3-agile">
                 <ul>
-                    <li><a href="#"><img src="{{URL::asset('images/VIE.png')}}" class="responsive" width="100%" height="auto"></a></li>
-                    <li><a href="#"><img src="{{URL::asset('images/ENG.png')}}" class="responsive" width="100%" height="auto"></a></li>
+                    <li><a href="#"><img src="{{URL::asset('images/VIE.png')}}" class="responsive" width="100%"
+                                         height="auto"></a></li>
+                    <li><a href="#"><img src="{{URL::asset('images/ENG.png')}}" class="responsive" width="100%"
+                                         height="auto"></a></li>
                     <li><i class="fa fa-envelope" aria-hidden="true"></i><a href="mailto:foodparadise@gmail.com">foodparadise@gmail.com</a>
                     </li>
                     <li><i class="fa fa-phone" aria-hidden="true"></i>+84 969 938 946</li>
+                    <li><a href="#"><i class="fa fa-opencart"></i></a></li>
                     <li>
                         <div class="search">
                             <input class="search_box" type="checkbox" id="search_box">
@@ -174,14 +177,20 @@
     <div class="ab-w3l-about">
         <div class="container">
             <h3 class="tittle-w3"><span>CHÀO MỪNG ĐẾN VỚI</span> FOOD PARADISE</h3>
-            <p class="para-w3l">Food Paradise là một trung tâm hội nghị hàng đầu với lối kiến trúc sang trọng, tinh tế, những tiêu chuẩn đẳng cấp cùng chất lượng dịch vụ chuyên nghiệp bậc nhất tại Thành Phố Hồ Chí Minh. Tổng diện tích sử dụng trên 6,500 mét vuông mang lại cho Food Paradise không gian mở rộng rãi, phù hợp nhiều loại hình hội nghị, sự kiện khác nhau. Cho dù bạn tổ chức một cuộc họp hội đồng quản trị cho 30 người hay Đại hội cổ đông cho 3.500 người hoặc một bữa tiệc cho 3.000 khách mời, Trung tâm hội nghị Food Paradise luôn sẵn sàng phục vụ và đáp ứng tốt nhất các yêu cầu của bạn để cùng mang đến thành công tốt đẹp.
+            <p class="para-w3l">Food Paradise là một trung tâm hội nghị hàng đầu với lối kiến trúc sang trọng, tinh tế,
+                những tiêu chuẩn đẳng cấp cùng chất lượng dịch vụ chuyên nghiệp bậc nhất tại Thành Phố Hồ Chí Minh. Tổng
+                diện tích sử dụng trên 6,500 mét vuông mang lại cho Food Paradise không gian mở rộng rãi, phù hợp nhiều
+                loại hình hội nghị, sự kiện khác nhau. Cho dù bạn tổ chức một cuộc họp hội đồng quản trị cho 30 người
+                hay Đại hội cổ đông cho 3.500 người hoặc một bữa tiệc cho 3.000 khách mời, Trung tâm hội nghị Food
+                Paradise luôn sẵn sàng phục vụ và đáp ứng tốt nhất các yêu cầu của bạn để cùng mang đến thành công tốt
+                đẹp.
             <p><a class="read" href="single.html">ĐỌC THÊM</a></p>
         </div>
     </div>
     <div class="about" id="about">
         <div class="col-md-6 ab-w3-agile-info">
             <div class="ab-w3-agile-info-text">
-                <h3 class="tittle-w3">About<span> Us</span></h3>
+                <h3 class="tittle-w3">Giới thiệu về <span>Chúng Tôi</span></h3>
                 <p class="para-w3l">Lorem ipsum dolor sit amet, consectetur adipisc elit. Proin ultricies vestibulum
                     velit.Lorem ipsum dolor sit amet.when an unknown printer took a galley of type and scrambled it to
                     make a type specimen book.Proin ultricies vestibulum velit.Lorem ipsum dolor sit amet.when an
@@ -192,13 +201,13 @@
             </div>
             <div class="ab-w3-agile-inner">
                 <div class="col-md-6 ab-w3-agile-part">
-                    <h4>Handling your needs with care</h4>
+                    <h4>Xử lý yêu cầu của bạn một cách cẩn thận</h4>
                     <p class="para-w3l">Lorem ipsum dolor sit amet, consectetur adipisc elit. Proin ultricies vestibulum
                         velit. a galley of type and scrambled it to make a type specimen book. Proin ultricies
                         vestibulum velit.</p>
                 </div>
                 <div class="col-md-6 ab-w3-agile-part two">
-                    <h4>Best recipes with best ingredients</h4>
+                    <h4>Công thức nấu ăn với nguyên liệu tốt nhất</h4>
                     <p class="para-w3l">Lorem ipsum dolor sit amet, consectetur adipisc elit. Proin ultricies vestibulum
                         velit., a galley of type and scrambled it to make a type specimen book. Proin ultricies
                         vestibulum velit.</p>
@@ -215,7 +224,7 @@
     <!--blogs-->
     <div class="agile-blogs" id="blogs">
         <div class="container">
-            <h3 class="tittle-w3"><span>Popular </span>Recipes</h3>
+            <h3 class="tittle-w3"><span>Công thức nấu ăn được</span> YÊU THÍCH</h3>
             <div class="g1 agile-blog1">
                 <a href="#"><img src="{{URL::asset('images/bl1.jpg')}}" alt="blog1"></a>
                 <div class="text-w3">
@@ -249,7 +258,7 @@
         <div id="particles-js"></div>
 
         <div class="count-grids">
-            <h3 class="tittle-w3">Handling <span>your needs</span> with care</h3>
+            <h3 class="tittle-w3">Xử lý <span>yêu cầu </span>một cách <span>tốt nhất</span></h3>
             <div class="count-bgcolor-w3ls">
                 <div class="col-md-4 count-grid">
                     <i class="fa fa-cutlery" aria-hidden="true"></i>
@@ -290,7 +299,7 @@
     <div class="services-w3layouts" id="services">
         <!-- //Stats -->
         <div class="col-md-6 agitsworkw3ls-grid ">
-            <h3 class="tittle-w3"><span>Always</span> fresh <span>& </span>delicious <span>food</span></h3>
+            <h3 class="tittle-w3"><span>THỰC PHẨM LUÔN</span> TƯƠI <span>& </span>NGON </h3>
             <p class="para-w3l">Gourmet is a full-service catering and event planning company dedicated to providing you
                 with exquisite cuisine and fantastic customer service. We offer a variety of menus and design options,
                 for everything from box lunches to full-service plated dinners.</p>
@@ -373,23 +382,23 @@
     <div class="mail">
         <div class="mail-grid1">
             <div class="container">
-                <h3 class="tittle-w3">Contact <span>Info</span></h3>
+                <h3 class="tittle-w3">THÔNG TIN <span>LIÊN HỆ</span></h3>
                 <div class="col-md-4 mail-agileits-w3layouts">
                     <i class="glyphicon glyphicon-earphone" aria-hidden="true"></i>
                     <div class="contact-right">
-                        <p>Phone</p><span>+1 (100)222-23-33</span>
+                        <p>Phone</p><span>+(84) 969 938 946</span>
                     </div>
                 </div>
                 <div class="col-md-4 mail-agileits-w3layouts">
                     <i class="glyphicon glyphicon-envelope" aria-hidden="true"></i>
                     <div class="contact-right">
-                        <p>Email</p><a href="mailto:info@example.com">info@example.com</a>
+                        <p>Email</p><a href="mailto:foodparadise@gmail.com">foodparadise@gmail.com</a>
                     </div>
                 </div>
                 <div class="col-md-4 mail-agileits-w3layouts">
                     <i class="glyphicon glyphicon-map-marker" aria-hidden="true"></i>
                     <div class="contact-right">
-                        <p>Address</p><span>7784 Diamonds street, California, US.</span>
+                        <p>Address</p><span>97 Man Thiện, Hiệp Phú, Q.9, HCMC</span>
                     </div>
                 </div>
                 <div class="clearfix"></div>
