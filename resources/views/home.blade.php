@@ -267,7 +267,7 @@
                              data-delay='.5' data-increment="100">1052
                         </div>
                         <span></span>
-                        <h5>Products available</h5>
+                        <h5>Món ăn</h5>
                     </div>
                 </div>
                 <div class="col-md-4 count-grid">
@@ -277,7 +277,7 @@
                              data-delay='.5' data-increment="100">372
                         </div>
                         <span></span>
-                        <h5>Clients come back</h5>
+                        <h5>Khách hàng hài lòng</h5>
                     </div>
                 </div>
                 <div class="col-md-4 count-grid">
@@ -287,7 +287,7 @@
                              data-delay='.5' data-increment="100">105209
                         </div>
                         <span></span>
-                        <h5>Site members</h5>
+                        <h5>Thành viên</h5>
                     </div>
                 </div>
                 <div class="clearfix"></div>
@@ -333,7 +333,7 @@
                             <a href="single.html"><img src="{{URL::asset('images/s1.jpg')}}" alt=" "
                                                        class="img-responsive"></a>
                             <div class="p-mask">
-                                <h4><span>D</span>elish <span>F</span>ood</h4>
+                                <h4><span>F</span>ood <span>P</span>aradise</h4>
                                 <p>Neque porro quisquam est, qui dolorem ipsum.</p>
                             </div>
                         </div>
@@ -343,7 +343,7 @@
                             <a href="single.html"><img src="{{URL::asset('images/s2.jpg')}}" alt=" "
                                                        class="img-responsive"></a>
                             <div class="p-mask">
-                                <h4><span>D</span>elish <span>F</span>ood</h4>
+                                <h4><span>F</span>ood <span>P</span>aradise</h4>
                                 <p>Neque porro quisquam est, qui dolorem ipsum.</p>
                             </div>
                         </div>
@@ -353,7 +353,7 @@
                             <a href="single.html"><img src="{{URL::asset('images/s3.jpg')}}" alt=" "
                                                        class="img-responsive"></a>
                             <div class="p-mask">
-                                <h4><span>D</span>elish <span>F</span>ood</h4>
+                                <h4><span>F</span>ood <span>P</span>aradise</h4>
                                 <p>Neque porro quisquam est, qui dolorem ipsum.</p>
                             </div>
                         </div>
@@ -363,7 +363,7 @@
                             <a href="single.html"><img src="{{URL::asset('images/s4.jpg')}}" alt=" "
                                                        class="img-responsive"></a>
                             <div class="p-mask">
-                                <h4><span>D</span>elish <span>F</span>ood</h4>
+                                <h4><span>F</span>ood <span>P</span>aradise</h4>
                                 <p>Neque porro quisquam est, qui dolorem ipsum.</p>
                             </div>
                         </div>
@@ -386,7 +386,7 @@
                 <div class="col-md-4 mail-agileits-w3layouts">
                     <i class="glyphicon glyphicon-earphone" aria-hidden="true"></i>
                     <div class="contact-right">
-                        <p>Phone</p><span>+(84) 969 938 946</span>
+                        <p>Điện thoại</p><span>+(84) 969 938 946</span>
                     </div>
                 </div>
                 <div class="col-md-4 mail-agileits-w3layouts">
@@ -398,7 +398,7 @@
                 <div class="col-md-4 mail-agileits-w3layouts">
                     <i class="glyphicon glyphicon-map-marker" aria-hidden="true"></i>
                     <div class="contact-right">
-                        <p>Address</p><span>97 Man Thiện, Hiệp Phú, Q.9, HCMC</span>
+                        <p>Địa chỉ</p><span>97 Man Thiện, Hiệp Phú, Q.9, HCMC</span>
                     </div>
                 </div>
                 <div class="clearfix"></div>
@@ -406,7 +406,7 @@
         </div>
 
         <div class="col-md-7 map ">
-            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d26359195.17562375!2d-113.7156245614499!3d36.2473834534249!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x54eab584e432360b%3A0x1c3bb99243deb742!2sUnited+States!5e0!3m2!1sen!2sin!4v1452332634941"></iframe>
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3918.522324040236!2d106.78381231404816!3d10.847820460839948!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3175276bb276eaf7%3A0x56a6a0eafe0e3b09!2zOTcgTWFuIFRoaeG7h24sIEhp4buHcCBQaMO6LCBRdeG6rW4gOSwgSOG7kyBDaMOtIE1pbmgsIFZp4buHdCBOYW0!5e0!3m2!1svi!2s!4v1531158934512"></iframe>
         </div>
         <div class="col-md-5 mail-grid1-form ">
             <h3 class="tittle-w3"><span>Send a </span>Message</h3>
