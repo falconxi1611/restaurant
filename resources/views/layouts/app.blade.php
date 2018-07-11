@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
 	<link rel="shortcut icon" href="{{URL::asset('images/icon.png')}}">
+	<link rel="stylesheet" href="{{URL::asset('css/style_button.css')}}">
 	<title>Food Paradise | @yield('title')</title>
 	<!-- for-mobile-apps -->
 	<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -40,7 +41,7 @@
 <script type="text/javascript" src="{{URL::asset('js/numscroller-1.0.js')}}"></script>
 <script src="{{URL::asset('js/particles.js')}}"></script>
 <script src="{{URL::asset('js/style.js')}}"></script>
-<!--gallery-->
+<!--menu-->
 <script type="text/javascript">
 	$(window).load(function () {
 		$("#flexiselDemo1").flexisel({
@@ -69,7 +70,7 @@
 	});
 </script>
 <script type="text/javascript" src="{{URL::asset('js/jquery.flexisel.js')}}"></script>
-<!--gallery-->
+<!--menu-->
 <!-- Dropdown-Menu-JavaScript -->
 <script>
 	$(document).ready(function () {

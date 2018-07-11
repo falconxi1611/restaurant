@@ -1,5 +1,7 @@
 <?php
 
+use App\Menu_Type;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -17,9 +19,7 @@ Route::get('/about', 'AboutController@showView');
 
 Route::get('/service',  'ServiceController@showView');
 
-Route::get('/gallery', function () {
-    return view('gallery/gallery');
-});
+Route::get('/menu', 'MenuController@showView');
 
 Route::get('/contact', function () {
     return view('contact/contact');
@@ -31,4 +31,10 @@ Route::get('/code', function () {
 
 Route::get('/icon', function () {
     return view('icon/icon');
+});
+
+Route::get('/read', function () {
+    $users = DB::table('MENU_TYPE')->select('MENUTYPE_ID', 'MENUTYPE_NAME AS NAME')->get();
+    return $users;
+
 });

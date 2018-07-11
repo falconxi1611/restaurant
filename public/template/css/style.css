@@ -634,7 +634,7 @@ h5.title-w3 {
 /*--/review--*/
 
 /*--flexisel--*/
-/*--gallery--*/
+/*--menu--*/
 .flex-slider{	
 	background:#222227;
 	padding: 70px 0 165px 0;
@@ -705,7 +705,7 @@ div#gallery {
     bottom: -6.3em;
 	left: 0em;
 }
-/*-- gallery --*/
+/*-- menu --*/
 /*-- about --*/
 .ab-w3l-about {
     text-align: center;
@@ -1072,7 +1072,7 @@ h3.tittle.two {
     text-align: left;
     color: #fff;
 }
-/*-- gallery --*/
+/*-- menu --*/
 .agile_gallery_grids{
 	margin:2em 0 0;
 }
@@ -1705,8 +1705,8 @@ figure.effect-jazz:hover p {
 }
 /*-- //features --*/
 /*--//services inner --*/
-/*-gallery-inner-*/
-/*-- gallery --*/
+/*-menu-inner-*/
+/*-- menu --*/
 .gallery-heading{
 	text-align:center;
 }
@@ -1845,8 +1845,8 @@ figure.effect-apollo:hover p {
 	-webkit-transition-delay: 0.1s;
 	transition-delay: 0.1s;
 }
-/*-- //gallery --*/
-/*--//gallery-inner*/
+/*-- //menu --*/
+/*--//menu-inner*/
 /*--contact-inner*/
 .contact-btm-w3ls {
     padding: 50px 0px;

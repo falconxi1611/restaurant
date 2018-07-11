@@ -81,7 +81,7 @@
                                             <li><a href="/icon">Tiệc Ngoài</a></li>
                                         </ul>
                                     </li>
-                                    <li class="menu__item"><a href="/gallery" class=" menu__link">THỰC ĐƠN</a></li>
+                                    <li class="menu__item"><a href="/menu" class=" menu__link">THỰC ĐƠN</a></li>
                                     <li class="menu__item"><a href="/contact" class=" menu__link">ƯU ĐÃI</a></li>
                                     <li class="menu__item"><a href="/contact" class=" menu__link">LIÊN HỆ</a></li>
                                 </ul>
@@ -127,7 +127,7 @@
                 </form>
             </div>
         </div>
-        <!-- gallery -->
+        <!-- menu -->
         <div class="gallery-ban" id="gallery">
             <div class="container">
                 <ul id="flexiselDemo1">
@@ -171,7 +171,7 @@
 
             </div>
         </div>
-        <!-- //gallery -->
+        <!-- //menu -->
     </div>
     <!-- //banner -->
     <div class="ab-w3l-about">
