@@ -7,12 +7,17 @@
  */
 
 namespace App\Http\Controllers;
+use App\Http\Controllers\Controller;
+use App\Menu_Type;
 
-
-class MenuController
+class MenuController extends Controller
 {
     public function showView()
     {
-        return view('menu/menu');
+
+//        return view('menu/menu');
+        $menu_type = Menu_Type::all();
+
+        return view('menu/menu', ['menu_type' => $menu_type]);
     }
 }

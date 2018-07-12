@@ -33,8 +33,14 @@ Route::get('/icon', function () {
     return view('icon/icon');
 });
 
+Route::get('/set_menu', function () {
+    return view('menu/set_menu');
+});
+
+
+
 Route::get('/read', function () {
-    $users = DB::table('MENU_TYPE')->select('MENUTYPE_ID', 'MENUTYPE_NAME AS NAME')->get();
+    $users = DB::table('MENU')->select('MENU_NAME')->get();
     return $users;
 
 });

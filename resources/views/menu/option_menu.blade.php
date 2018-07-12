@@ -24,7 +24,7 @@
 										<h3>{{$menu->MENUTYPE_NAME}}</h3>
 										<p>Food Paradise <br>Tinh Hoa Ẩm Thực</p>
 										<div class="menu_fd">
-											<form action="/set_menu">
+											<form action="/">
 												<button class="w3-button w3-block w3-hover-yellow">SET MENU</button>
 											</form>
 											<form action="/">
