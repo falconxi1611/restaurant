@@ -26,19 +26,13 @@
                     <li><i class="fa fa-envelope" aria-hidden="true"></i><a href="mailto:foodparadise@gmail.com">foodparadise@gmail.com</a>
                     </li>
                     <li><i class="fa fa-phone" aria-hidden="true"></i>+84 969 938 946</li>
-                    <li><a href="#"><i class="fa fa-opencart"></i></a></li>
                     <li>
-                        <div class="search">
-                            <input class="search_box" type="checkbox" id="search_box">
-                            <label class="icon-search" for="search_box"><span class="glyphicon glyphicon-search"
-                                                                              aria-hidden="true"></span></label>
-                            <div class="search_form">
-                                <form action="#" method="post">
-                                    <input type="search" name="Search" placeholder="Search..." required=""/>
-                                    <input type="submit" value="Send"/>
-                                </form>
-                            </div>
-                        </div>
+                        <form action="#" method="get" class="last">
+                            <input type="hidden" name="cmd" value="_cart">
+                            <input type="hidden" name="display" value="1">
+                            <button class="button-cart" class="top_shoe_cart" type="submit" name="submit" value=""><i
+                                        class="fa fa-opencart" aria-hidden="true"></i></button>
+                        </form>
                     </li>
                 </ul>
             </div>

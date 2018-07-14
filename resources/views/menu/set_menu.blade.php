@@ -1,6 +1,6 @@
 @extends('about.about')
 
-@section('title', 'Thực Đơn')
+@section('title', 'Set Menu')
 @section('menu', 'menu__item--current')
 @section('about', '')
 @section('main_content')
@@ -19,18 +19,6 @@
 						<input type="submit" value=" ">
 					</form>
 				</div>
-				<!-- price range -->
-				<div class="range">
-					<h3 class="agileits-sear-head">Price range</h3>
-					<ul class="dropdown-menu6">
-						<li>
-
-							<div id="slider-range"></div>
-							<input type="text" id="amount" style="border: 0; color: #ffffff; font-weight: normal;" />
-						</li>
-					</ul>
-				</div>
-				<!-- //price range -->
 				<!--preference -->
 				<div class="left-side">
 					<h3 class="agileits-sear-head">Occasion</h3>
@@ -582,7 +570,7 @@
 											<div class="grid_meta">
 												<div class="product_price">
 													<div class="grid-price ">
-														<span class="money ">$505.00</span>
+														<span class="money ">505000 VNĐ</span>
 													</div>
 												</div>
 												<ul class="stars">
@@ -598,7 +586,7 @@
 													<input type="hidden" name="cmd" value="_cart">
 													<input type="hidden" name="add" value="1">
 													<input type="hidden" name="shoe_item" value="Sukun Casuals">
-													<input type="hidden" name="amount" value="505.00">
+													<input type="hidden" name="amount" value="505000">
 													<button type="submit" class="shoe-cart pshoe-cart"><i class="fa fa-cart-plus" aria-hidden="true"></i></button>
 
 													<a href="#" data-toggle="modal" data-target="#myModal1"></a>

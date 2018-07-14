@@ -144,5 +144,22 @@
 	});
 </script>
 <!-- script-for-menu -->
+
+<!-- cart-js -->
+<script src="{{URL::asset('js/minicart.js')}}"></script>
+<script>
+    shoe.render();
+
+    shoe.cart.on('shoe_checkout', function (evt) {
+        var items, len, i;
+
+        if (this.subtotal() > 0) {
+            items = this.items();
+
+            for (i = 0, len = items.length; i < len; i++) {}
+        }
+    });
+</script>
+<!-- //cart-js -->
 </body>
 </html>

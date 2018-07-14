@@ -5413,4 +5413,13 @@ h2.typoh2 {
     margin-top: 295px;
 }
 
+.button-cart{
+    background-color: Transparent;
+    background-repeat:no-repeat;
+    border: none;
+    cursor:pointer;
+    overflow: hidden;
+    outline:none;
+}
+
 /*--responsive--*/
