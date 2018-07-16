@@ -57,10 +57,10 @@
                         <div class="collapse navbar-collapse navbar-right" id="bs-example-navbar-collapse-1">
                             <nav class="menu menu--miranda">
                                 <ul class="nav navbar-nav menu__list">
-                                    <li class="menu__item "><a href="/" class="menu__link">TRANG
+                                    <li class="menu__item "><a href="{{url('/')}}" class="menu__link">TRANG
                                             CHỦ</a>
                                     </li>
-                                    <li class="menu__item @section('about') menu__item--current @show"><a href="/about"
+                                    <li class="menu__item @section('about') menu__item--current @show"><a href="{{url('about')}}"
                                                                                                           class=" menu__link">GIỚI
                                             THIỆU</a></li>
                                     <li class="dropdown menu__item  @section('service') @show">
@@ -74,7 +74,7 @@
                                             <li><a href="/icon">Tiệc Ngoài</a></li>
                                         </ul>
                                     </li>
-                                    <li class="menu__item"><a href="/menu" class=" menu__link">THỰC ĐƠN</a></li>
+                                    <li class="menu__item @section('menu') @show" ><a href="/menu" class=" menu__link">THỰC ĐƠN</a></li>
                                     <li class="menu__item"><a href="/contact" class=" menu__link">ƯU ĐÃI</a></li>
                                     <li class="menu__item"><a href="/contact" class=" menu__link">LIÊN HỆ</a></li>
                                 </ul>

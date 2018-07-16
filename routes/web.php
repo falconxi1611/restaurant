@@ -19,7 +19,9 @@ Route::get('/about', 'AboutController@showView');
 
 Route::get('/service',  'ServiceController@showView');
 
-Route::get('/menu', 'MenuController@showView');
+Route::get('/menu', 'MenuTypeController@showView');
+
+Route::get('/set_menu', 'MenuController@showList');
 
 Route::get('/contact', function () {
     return view('contact/contact');
@@ -32,12 +34,6 @@ Route::get('/code', function () {
 Route::get('/icon', function () {
     return view('icon/icon');
 });
-
-Route::get('/set_menu', function () {
-    return view('menu/set_menu');
-});
-
-
 
 Route::get('/read', function () {
     $users = DB::table('MENU')->select('MENU_NAME')->get();

@@ -15,16 +15,17 @@
 						<div class="grid">
 							<figure class="effect-apollo">
 								<a class="example-image-link"
-								   href="<?php echo asset("images/menu_type/$menu->IMAGE")?>"
+								   href="{{ asset("images/menu_type/$menu->IMAGE") }}"
 								   data-lightbox="example-set"
 								   data-title="">
-									<img class="menu_fp" src="<?php echo asset("images/menu_type/$menu->IMAGE")?>"
+									<img class="menu_fp" src="{{ asset("images/menu_type/$menu->IMAGE") }}"
 										 alt=""/>
 									<figcaption>
 										<h3>{{$menu->MENUTYPE_NAME}}</h3>
 										<p>Food Paradise <br>Tinh Hoa Ẩm Thực</p>
 										<div class="menu_fd">
-											<form action="/set_menu">
+											<form action="{{url('set_menu')}}" method="POST">
+												<input name="menutype_id" type="hidden" value="{{$menu->MENUTYPE_ID}}">
 												<button class="w3-button w3-block w3-hover-yellow">SET MENU</button>
 											</form>
 											<form action="/">
