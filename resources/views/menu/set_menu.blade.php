@@ -209,7 +209,7 @@
 										<img src="{{ asset("images/menu/$menu->IMAGE") }}" alt="">
 										<div class="men-cart-pro">
 											<div class="inner-men-cart-pro">
-												<a href="single.html" class="link-product-add-cart">Quick View</a>
+												<a href="{{url('menu_detail')}}" class="link-product-add-cart">Xem Chi Tiết</a>
 											</div>
 										</div>
 										<span class="product-new-top">New</span>
@@ -222,7 +222,7 @@
 											<div class="grid_meta">
 												<div class="product_price">
 													<div class="grid-price ">
-														<span class="money ">{{$menu->COST}}</span>
+														<span class="money ">{{number_format($menu->COST)}} đ</span>
 													</div>
 												</div>
 												<ul class="stars">

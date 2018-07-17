@@ -1,6 +1,7 @@
 <?php
 
 use App\Menu_Type;
+use App\Menu;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,11 +18,15 @@ Route::get('/', 'HomeController@showView');
 
 Route::get('/about', 'AboutController@showView');
 
-Route::get('/service',  'ServiceController@showView');
+Route::get('/service', 'ServiceController@showView');
 
 Route::get('/menu', 'MenuTypeController@showView');
 
 Route::get('/set_menu', 'MenuController@showList');
+
+Route::get('/menu_detail', function () {
+    return view('menu/menu_detail');
+});
 
 Route::get('/contact', function () {
     return view('contact/contact');
