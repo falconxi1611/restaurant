@@ -23,11 +23,14 @@
 	<link href="//fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet">
 	<link href="//fonts.googleapis.com/css?family=Lato:300,400,700" rel="stylesheet">
 	<link href="//fonts.googleapis.com/css?family=Tangerine:400,700" rel="stylesheet">
+	<link href="//fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800" rel="stylesheet">
 	<!--//web-fonts-->
 
 	{{--SET MENU--}}
 	<link rel="stylesheet" href="{{URL::asset('css/setmenu.css')}}" type="text/css" media="screen" property="" />
 	<link href="{{URL::asset('css/style7.css')}}" rel="stylesheet" type="text/css" media="all" />
+	<link rel="stylesheet" href="{{URL::asset('css/flexslider.css')}}" type="text/css" media="screen" />
+	<link href="{{URL::asset('css/easy-responsive-tabs.css')}}" rel='stylesheet' type='text/css' />
 	<link rel="stylesheet" type="text/css" href="{{URL::asset('css/jquery-ui1.css')}}">
 	<link href="//fonts.googleapis.com/css?family=Montserrat:100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800"
 		  rel="stylesheet">
@@ -161,5 +164,65 @@
     });
 </script>
 <!-- //cart-js -->
+
+<!-- /nav -->
+<script src="{{URL::asset('js/modernizr-2.6.2.min.js')}}"></script>
+<script src="{{URL::asset('js/classie.js')}}"></script>
+<script src="{{URL::asset('js/demo1.js')}}"></script>
+<!-- //nav -->
+<!-- single -->
+<script src="{{URL::asset('js/imagezoom.js')}}"></script>
+<!-- single -->
+<!-- script for responsive tabs -->
+{{--TODO: FIX IT--}}
+{{--<script src="{{URL::asset('js/easy-responsive-tabs.js'}}"></script>--}}
+<script>
+    $(document).ready(function () {
+        $('#horizontalTab').easyResponsiveTabs({
+            type: 'default', //Types: default, vertical, accordion
+            width: 'auto', //auto or any width like 600px
+            fit: true, // 100% fit in a container
+            closed: 'accordion', // Start closed if in accordion view
+            activate: function (event) { // Callback function if tab is switched
+                var $tab = $(this);
+                var $info = $('#tabInfo');
+                var $name = $('span', $info);
+                $name.text($tab.text());
+                $info.show();
+            }
+        });
+        $('#verticalTab').easyResponsiveTabs({
+            type: 'vertical',
+            width: 'auto',
+            fit: true,
+        });
+    });
+</script>
+<!-- FlexSlider -->
+<script src="{{URL::asset('js/jquery.flexslider.js')}}"></script>
+<script>
+    // Can also be used with $(document).ready()
+    $(window).load(function () {
+        $('.flexslider').flexslider({
+            animation: "slide",
+            controlNav: "thumbnails"
+        });
+    });
+</script>
+<!-- //FlexSlider-->
+<!-- start-smoth-scrolling -->
+<script type="text/javascript" src="{{URL::asset('js/move-top.js')}}"></script>
+<script type="text/javascript" src="{{URL::asset('js/easing.js')}}"></script>
+<script type="text/javascript">
+    jQuery(document).ready(function ($) {
+        $(".scroll").click(function (event) {
+            event.preventDefault();
+            $('html,body').animate({
+                scrollTop: $(this.hash).offset().top
+            }, 1000);
+        });
+    });
+</script>
+<script type="text/javascript" src="{{URL::asset('js/bootstrap-3.1.1.min.js')}}"></script>
 </body>
 </html>

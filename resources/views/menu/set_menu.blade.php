@@ -216,7 +216,7 @@
 									</div>
 									<div class="item-info-product">
 										<h4>
-											<a href="single.html">{{$menu->MENU_NAME}}</a>
+											<a href="{{url('menu_detail')}}">{{$menu->MENU_NAME}}</a>
 										</h4>
 										<div class="info-product-price">
 											<div class="grid_meta">
