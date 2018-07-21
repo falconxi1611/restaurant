@@ -24,7 +24,6 @@ Route::get('/menu', 'MenuTypeController@showView');
 
 Route::get('/set_menu', 'MenuController@showList');
 
-
 Route::get('menu_id', 'MenuDetailController@showDetail');
 
 Route::get('/code', function () {
