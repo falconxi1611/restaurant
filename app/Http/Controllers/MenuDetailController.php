@@ -27,12 +27,10 @@ class MenuDetailController extends Controller
         }
         $this->data['food_list'] = $food_list;
 
-        $menu = Menu::where('ID', $menu_id)->get(["MENU_NAME"]);
+        $menu = Menu::where('ID', $menu_id)->get();
         $menu = json_decode($menu)[0];
-        echo "<pre>"; var_dump($menu); echo "</pre>"; die;
-        $this->data['menu'] = json_decode($menu);
 
-
+        $this->data['menu'] = $menu;
 
         return view('menu/menu_detail', $this->data);
     }

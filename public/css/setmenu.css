@@ -1046,6 +1046,7 @@ span.item_price {
     font-weight: 600;
 }
 input.button.add {
+	margin-top: 20px;
     font-size: 13px;
     color: #fff;
     background: #1d1d1d;

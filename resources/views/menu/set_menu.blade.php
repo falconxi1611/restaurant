@@ -4,6 +4,7 @@
 @section('menu', 'menu__item--current')
 @section('about', '')
 @section('main_content')
+    <div class="div_menu_align">
 	<!-- top Products -->
 	<div class="ads-grid_shop">
 		<div class="shop_inner_inf">
@@ -223,7 +224,7 @@
 												<div class="grid_meta">
 													<div class="product_price">
 														<div class="grid-price ">
-															<span class="money ">{{number_format($menu->COST)}} đ</span>
+															<span class="money ">{{number_format($menu->COST)}} VND</span>
 														</div>
 													</div>
 													<ul class="stars">
@@ -270,4 +271,5 @@
 			<div class="clearfix"></div>
 		</div>
 	</div>
+    </div>
 @endsection
