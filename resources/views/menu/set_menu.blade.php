@@ -209,44 +209,52 @@
 										<img src="{{ asset("images/menu/$menu->IMAGE") }}" alt="">
 										<div class="men-cart-pro">
 											<div class="inner-men-cart-pro">
-												<a href="{{url('menu_detail')}}" class="link-product-add-cart">Xem Chi Tiết</a>
+												<a href="{{url('menu_detail')}}" class="link-product-add-cart">Xem Chi
+													Tiết</a>
 											</div>
 										</div>
 										<span class="product-new-top">New</span>
 									</div>
 									<div class="item-info-product">
 										<h4>
-											<a href="{{url('menu_detail')}}">{{$menu->MENU_NAME}}</a>
-										</h4>
-										<div class="info-product-price">
-											<div class="grid_meta">
-												<div class="product_price">
-													<div class="grid-price ">
-														<span class="money ">{{number_format($menu->COST)}} đ</span>
+											<a href="/menu_id?menu_id={{$menu->ID}}">{{$menu->MENU_NAME}}</a>
+
+											<div class="info-product-price">
+												<div class="grid_meta">
+													<div class="product_price">
+														<div class="grid-price ">
+															<span class="money ">{{number_format($menu->COST)}} đ</span>
+														</div>
 													</div>
+													<ul class="stars">
+														<li><a href="#"><i class="fa fa-star"
+																		   aria-hidden="true"></i></a></li>
+														<li><a href="#"><i class="fa fa-star"
+																		   aria-hidden="true"></i></a></li>
+														<li><a href="#"><i class="fa fa-star"
+																		   aria-hidden="true"></i></a></li>
+														<li><a href="#"><i class="fa fa-star"
+																		   aria-hidden="true"></i></a></li>
+														<li><a href="#"><i class="fa fa-star-half-o"
+																		   aria-hidden="true"></i></a></li>
+													</ul>
 												</div>
-												<ul class="stars">
-													<li><a href="#"><i class="fa fa-star" aria-hidden="true"></i></a></li>
-													<li><a href="#"><i class="fa fa-star" aria-hidden="true"></i></a></li>
-													<li><a href="#"><i class="fa fa-star" aria-hidden="true"></i></a></li>
-													<li><a href="#"><i class="fa fa-star" aria-hidden="true"></i></a></li>
-													<li><a href="#"><i class="fa fa-star-half-o" aria-hidden="true"></i></a></li>
-												</ul>
-											</div>
-											<div class="shoe single-item hvr-outline-out">
-												<form action="#" method="post">
-													<input type="hidden" name="cmd" value="_cart">
-													<input type="hidden" name="add" value="1">
-													<input type="hidden" name="shoe_item" value="Bank Sneakers">
-													<input type="hidden" name="amount" value="{{$menu->COST}}">
-													<button type="submit" class="shoe-cart pshoe-cart"><i class="fa fa-cart-plus" aria-hidden="true"></i></button>
+												<div class="shoe single-item hvr-outline-out">
+													<form action="#" method="post">
+														<input type="hidden" name="cmd" value="_cart">
+														<input type="hidden" name="add" value="1">
+														<input type="hidden" name="shoe_item" value="Bank Sneakers">
+														<input type="hidden" name="amount" value="{{$menu->COST}}">
+														<button type="submit" class="shoe-cart pshoe-cart"><i
+																	class="fa fa-cart-plus" aria-hidden="true"></i>
+														</button>
 
-													<a href="#" data-toggle="modal" data-target="#myModal1"></a>
-												</form>
+														<a href="#" data-toggle="modal" data-target="#myModal1"></a>
+													</form>
 
+												</div>
 											</div>
-										</div>
-										<div class="clearfix"></div>
+											<div class="clearfix"></div>
 									</div>
 								</div>
 							</div>
@@ -256,15 +264,6 @@
 
 					</div>
 
-					<!-- //product-sec1 -->
-					<div class="col-md-6 shop_left shp">
-						<img src="images/banner4.jpg" alt="">
-						<h6>21% off</h6>
-					</div>
-					<div class="col-md-6 shop_right shp">
-						<img src="images/banner1.jpg" alt="">
-						<h6>31% off</h6>
-					</div>
 					<div class="clearfix"></div>
 				</div>
 			</div>

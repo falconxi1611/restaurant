@@ -122,17 +122,16 @@
 <!-- here stars scrolling icon -->
 <script type="text/javascript">
 	$(document).ready(function () {
-		/*
+	    //TODO: Comment if error
 			var defaults = {
 			containerID: 'toTop', // fading element id
 			containerHoverID: 'toTopHover', // fading element hover id
 			scrollSpeed: 1200,
 			easingType: 'linear'
 			};
-		*/
 
 		$().UItoTop({easingType: 'easeOutQuart'});
-
+//To here
 	});
 </script>
 <!-- //here ends scrolling icon -->
@@ -175,7 +174,7 @@
 <!-- single -->
 <!-- script for responsive tabs -->
 {{--TODO: FIX IT--}}
-{{--<script src="{{URL::asset('js/easy-responsive-tabs.js'}}"></script>--}}
+<script src="{{URL::asset('js/easy-responsive-tabs.js')}}"></script>
 <script>
     $(document).ready(function () {
         $('#horizontalTab').easyResponsiveTabs({

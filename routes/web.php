@@ -24,8 +24,11 @@ Route::get('/menu', 'MenuTypeController@showView');
 
 Route::get('/set_menu', 'MenuController@showList');
 
-Route::get('/menu_detail', function () {
-    return view('menu/menu_detail');
+
+Route::get('menu_id', 'MenuDetailController@showDetail');
+
+Route::get('/code', function () {
+    return view('code/code');
 });
 
 Route::get('/contact', function () {

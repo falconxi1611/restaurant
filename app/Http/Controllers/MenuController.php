@@ -18,6 +18,10 @@ class MenuController extends Controller
     {
         $menutype_id = $rq->get('menutype_id');
         $menu = Menu::find($menutype_id);
+        if($menu === null)
+        {
+            return view('errors/error');
+        }
         $this->data['menu'] = $menu;
         return view('menu/set_menu', $this->data);
     }
