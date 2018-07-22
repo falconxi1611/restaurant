@@ -248,11 +248,12 @@
                                             </ul>
                                         </div>
                                         <div class="shoe single-item hvr-outline-out">
-                                            <form action="#" method="post">
+                                            <form action="/" method="post">
                                                 <input type="hidden" name="cmd" value="_cart">
                                                 <input type="hidden" name="add" value="1">
                                                 <input type="hidden" name="shoe_item" value="Red Bellies">
                                                 <input type="hidden" name="amount" value="325.00">
+                                                <input type="hidden" name="_token" id="csrf-token" value="{{csrf_field()}}" />
                                                 <button type="submit" class="shoe-cart pshoe-cart"><i
                                                             class="fa fa-cart-plus" aria-hidden="true"></i></button>
 
