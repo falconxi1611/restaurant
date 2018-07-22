@@ -26,6 +26,10 @@ Route::get('/set_menu', 'MenuController@showList');
 
 Route::get('menu_id', 'MenuDetailController@showDetail');
 
+Route::post('/checkout', function (){
+    return view('cart/checkout');
+});
+
 Route::get('/code', function () {
     return view('code/code');
 });

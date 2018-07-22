@@ -35,6 +35,10 @@
 	<link href="//fonts.googleapis.com/css?family=Montserrat:100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800"
 		  rel="stylesheet">
 	<link href="//fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800" rel="stylesheet">
+
+	{{--CSS Check Out--}}
+	<link rel="stylesheet" type="text/css" href="{{URL::asset('css/checkout.css')}}">
+
 </head>
 <body>
 {{--Comtent--}}
@@ -222,6 +226,53 @@
         });
     });
 </script>
+
+{{--JS  for checkout--}}
+<!--quantity-->
+<script>
+    $('.value-plus').on('click', function () {
+        var divUpd = $(this).parent().find('.value'),
+            newVal = parseInt(divUpd.text(), 10) + 1;
+        divUpd.text(newVal);
+    });
+
+    $('.value-minus').on('click', function () {
+        var divUpd = $(this).parent().find('.value'),
+            newVal = parseInt(divUpd.text(), 10) - 1;
+        if (newVal >= 1) divUpd.text(newVal);
+    });
+</script>
+<!--quantity-->
+<script>
+    $(document).ready(function (c) {
+        $('.close1').on('click', function (c) {
+            $('.rem1').fadeOut('slow', function (c) {
+                $('.rem1').remove();
+            });
+        });
+    });
+</script>
+<script>
+    $(document).ready(function (c) {
+        $('.close2').on('click', function (c) {
+            $('.rem2').fadeOut('slow', function (c) {
+                $('.rem2').remove();
+            });
+        });
+    });
+</script>
+<script>
+    $(document).ready(function (c) {
+        $('.close3').on('click', function (c) {
+            $('.rem3').fadeOut('slow', function (c) {
+                $('.rem3').remove();
+            });
+        });
+    });
+</script>
+
+<!-- //end-smoth-scrolling -->
+<script type="text/javascript" src="js/bootstrap-3.1.1.min.js"></script>
 <script type="text/javascript" src="{{URL::asset('js/bootstrap-3.1.1.min.js')}}"></script>
 </body>
 </html>

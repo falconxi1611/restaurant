@@ -17,12 +17,14 @@ class MenuController extends Controller
     public function showList(Request $rq)
     {
         $menutype_id = $rq->get('menutype_id');
-        $menu = Menu::find($menutype_id);
-        if($menu === null)
+        $list_menu = Menu::where('MENUTYPE_ID', $menutype_id)->get();
+
+        $data = json_decode($list_menu);
+        if(count($data) == 0)
         {
             return view('errors/error');
         }
-        $this->data['menu'] = $menu;
+        $this->data['list_menu'] = $list_menu;
         return view('menu/set_menu', $this->data);
     }
 }
