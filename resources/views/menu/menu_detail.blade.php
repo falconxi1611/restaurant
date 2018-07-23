@@ -71,7 +71,7 @@
                                 <input type="hidden" name="add" value="1">
                                 <input type="hidden" name="shoe_item" value="{{$menu->MENU_NAME}}">
                                 <input type="hidden" name="amount" value="{{$menu->COST}}">
-                                <input type="hidden" name="_token" id="csrf-token" value="{{csrf_token()}}">
+                                <input type="hidden" name="_token" id="csrf-token" value="{{csrf_field()}}">
                                 <input type="submit" name="submit" value="Add to cart" class="button add">
 
                                 <a href="#" data-toggle="modal" data-target="#myModal1"></a>
@@ -254,7 +254,6 @@
                                                 <input type="hidden" name="add" value="1">
                                                 <input type="hidden" name="shoe_item" value="Red Bellies">
                                                 <input type="hidden" name="amount" value="325.00">
-
                                                 <button type="submit" class="shoe-cart pshoe-cart"><i
                                                             class="fa fa-cart-plus" aria-hidden="true"></i></button>
 
