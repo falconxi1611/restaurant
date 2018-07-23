@@ -252,6 +252,7 @@
 																	   value="{{$menu->MENU_NAME}}">
 																<input type="hidden" name="amount"
 																	   value="{{$menu->COST}}">
+                                                                <input type="hidden" name="_token" id="csrf-token" value="{{csrf_token()}}">
 																<button type="submit" class="shoe-cart pshoe-cart"><i
 																			class="fa fa-cart-plus"
 																			aria-hidden="true"></i>
