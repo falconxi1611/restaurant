@@ -15,8 +15,14 @@ class CartController extends Controller
 {
     public function show(Request $request)
     {
-        echo "<pre>"; dd($request); echo "</pre>"; die;
-        dd($request->input('amount_1'));
+        $a = $request->input();
+
+        echo "<pre>"; var_dump(count($a)); echo "</pre>"; die;
+        echo "<pre>"; var_dump($request->input()); echo "</pre>"; die; $a;
+        echo "<pre>"; echo $b; echo "</pre>"; die;
+//        echo "<pre>"; var_dump($a); echo "</pre>"; die;
+//        echo "<pre>"; dd($request); echo "</pre>"; die;
+//        dd($request->input('amount_'));
         return ('Hello Form');
     }
 }
