@@ -26,7 +26,6 @@ class MenuDetailController extends Controller
             return view('errors/error');
         }
         $this->data['food_list'] = $food_list;
-
         $menu = Menu::where('ID', $menu_id)->get();
         $menu = json_decode($menu)[0];
 

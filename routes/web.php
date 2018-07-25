@@ -15,9 +15,6 @@ use App\Menu;
 */
 
 Route::get('/', 'HomeController@showView');
-//Route::get('/', function (){
-//    return view('form');
-//});
 
 Route::post('/checkout', 'CartController@show');
 
@@ -31,9 +28,11 @@ Route::get('/set_menu', 'MenuController@showList');
 
 Route::get('menu_id', 'MenuDetailController@showDetail');
 
-//Route::post('/checkout', function (){
-//    return view('cart/checkout');
-//});
+Route::get('/add', 'CartController@add');
+
+Route::get('/test', function (){
+    return view('cart/checkout');
+});
 
 Route::get('/code', function () {
     return view('code/code');

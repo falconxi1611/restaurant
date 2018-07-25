@@ -71,8 +71,9 @@
                                 <input type="hidden" name="add" value="1">
                                 <input type="hidden" name="shoe_item" value="{{$menu->MENU_NAME}}">
                                 <input type="hidden" name="amount" value="{{$menu->COST}}">
-                                <input type="hidden" name="_token" id="csrf-token" value="{{csrf_field()}}">
                                 <input type="submit" name="submit" value="Add to cart" class="button add">
+                                <input type="hidden" name="_token" id="csrf-token" value="{{csrf_token()}}">
+
 
                                 <a href="#" data-toggle="modal" data-target="#myModal1"></a>
                             </form>
