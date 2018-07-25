@@ -11,6 +11,7 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Cart;
+use App\Order;
 
 class CartController extends Controller
 {
@@ -46,29 +47,31 @@ class CartController extends Controller
 
         $this->data['cart_name'] = $cart_name;
         $this->data['quantity']  = $quantity;
-        $this->data['amount']     = $amount;
+        $this->data['amount']    = $amount;
 
         return view('cart/checkout', $this->data);
     }
 
     public function add()
     {
-        dd("Here");
-        $cartInfo = [
-            'CUSTOMER_ID' => 1,
-            'MENU_ID' => 1,
-            'NUMBER_OF_TABLE' => 50,
-            'NUMBER_OF_CUSTOMER' => 100,
-            'ORDER_DATE' => '2018-07-25' ,
-            'TIME_DATE' => '12:00',
-            'TOTAL_AMOUNT' => 1300000,
-            'DISCOUNT' => 0,
-            'DEPOSIT' => 500000,
-            'REST_MONEY' => 600000,
-            'PAYMENT_METHOD' => 1,
-            'STATUS' => 0
-        ];
-        Cart::add($cartInfo);
-        echo "<pre>"; var_dump("OK"); echo "</pre>"; die;
+        $p                     = new Order;
+        $p->CUSTOMER_ID        = 1;
+        $p->MENU_ID            = 1;
+        $p->NUMBER_OF_TABLE    = 50;
+        $p->NUMBER_OF_CUSTOMER = 100;
+        $p->ORDER_DATE         = '2018-07-25';
+        $p->TIME_DATE          = '12:00';
+        $p->TOTAL_AMOUNT       = 1300000;
+        $p->DISCOUNT           = 0;
+        $p->DEPOSIT            = 500000;
+        $p->REST_MONEY         = 600000;
+        $p->PAYMENT_METHOD     = 1;
+        $p->STATUS             = 0;
+
+        $p->save();
+        echo "<pre>";
+        var_dump("OK");
+        echo "</pre>";
+        die;
     }
 }
