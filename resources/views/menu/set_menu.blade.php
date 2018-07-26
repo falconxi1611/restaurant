@@ -209,10 +209,10 @@
 									<div class="product-shoe-info shoe">
 										<div class="men-pro-item">
 											<div class="men-thumb-item">
-												<img src="{{ asset("images/menu/$menu->IMAGE") }}" alt="">
+												<img width="254.578" height="179" src="{{asset("images/menu/$menu->IMAGE") }}" alt="">
 												<div class="men-cart-pro">
 													<div class="inner-men-cart-pro">
-														<a href="{{url('menu_detail')}}" class="link-product-add-cart">Xem
+														<a href="/menu_id?menu_id={{$menu->ID}}" class="link-product-add-cart">Xem
 															Chi
 															Tiết</a>
 													</div>
@@ -231,7 +231,7 @@
 																		VND</span>
 																</div>
 															</div>
-															<ul class="stars">
+															<ul class="stars1">
 																<li><a href="#"><i class="fa fa-star"
 																				   aria-hidden="true"></i></a></li>
 																<li><a href="#"><i class="fa fa-star"
@@ -250,6 +250,8 @@
 																<input type="hidden" name="add" value="1">
 																<input type="hidden" name="shoe_item"
 																	   value="{{$menu->MENU_NAME}}">
+                                                                <input type="hidden" name="image"
+                                                                       value="{{$menu->IMAGE}}">
 																<input type="hidden" name="amount"
 																	   value="{{$menu->COST}}">
                                                                 <input type="hidden" name="_token" id="csrf-token" value="{{csrf_token()}}">

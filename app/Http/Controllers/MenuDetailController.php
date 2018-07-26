@@ -33,4 +33,9 @@ class MenuDetailController extends Controller
 
         return view('menu/menu_detail', $this->data);
     }
+
+    public function showPeople(Request $request)
+    {
+        dd($request->input("people"));
+    }
 }

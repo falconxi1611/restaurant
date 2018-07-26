@@ -21,33 +21,48 @@ class CartController extends Controller
         $cart_name = array();
         $quantity  = array();
         $amount    = array();
-        for ($i = 0; $i < $totalCart; $i++)
+        $image     = array();
+        $total_amount = 0;
+
+        for ($i = 1; $i < $totalCart; $i++)
         {
             $item_name1 = "shoe_item_" . $i;
             $name       = $request->input($item_name1);
             if ($name != "")
             {
-                $cart_name[] = $request->input($item_name1);
+                $cart_name[] = $name;
             }
 
             $item_name2 = "quantity_" . $i;
             $num        = $request->input($item_name2);
             if ($num != "")
             {
-                $quantity[] = $request->input($item_name2);
+                $quantity[] = $num;
             }
 
             $item_name3 = "amount_" . $i;
             $price      = $request->input($item_name3);
             if ($price != "")
             {
-                $amount[] = $request->input($item_name3);
+                $amount[] = $price;
             }
+
+            $item_name4 = "image_" . $i;
+            $img        = $request->input($item_name4);
+            if ($img != "")
+            {
+                $image[] = $img;
+            }
+
+            $total_amount +=  $price * $num;
         }
 
         $this->data['cart_name'] = $cart_name;
         $this->data['quantity']  = $quantity;
         $this->data['amount']    = $amount;
+        $this->data['image']     = $image;
+        $this->data['total']     = count($cart_name);
+        $this->data['total_amount'] = $total_amount;
 
         return view('cart/checkout', $this->data);
     }

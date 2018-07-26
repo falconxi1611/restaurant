@@ -430,7 +430,7 @@ span.money {
 }
 
 ul.stars i {
-	font-size: 15px;
+	font-size: 22px;
 }
 ul.stars li {
   list-style:none;
@@ -445,6 +445,24 @@ ul.stars li a:hover {
 .product-shoe-info {
     padding: 15px;
     border: 1px solid #e4e4e4;
+}
+
+ul.stars1 i {
+	font-size: 15px;
+}
+ul.stars1 li {
+	list-style:none;
+	display:inline-block;
+}
+ul.stars1 li a {
+	color:#333;
+}
+ul.stars1 li a:hover {
+	color:#fb383b;
+}
+.product-shoe-info {
+	padding: 15px;
+	border: 1px solid #e4e4e4;
 }
 /*-- //effect on products --*/
 

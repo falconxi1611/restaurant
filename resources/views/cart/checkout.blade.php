@@ -11,10 +11,10 @@
         <div class="ads-grid_shop">
             <div class="shop_inner_inf">
                 <div class="privacy about">
-                    <h3>Chec<span>kout</span></h3>
+                    <h3>Giỏ<span> Hàng</span></h3>
 
                     <div class="checkout-right">
-                        <h4>Your shopping cart contains: <span>3 Products</span></h4>
+                        <h4>Giỏ hàng của bạn hiện có: <span>{{$total}} Sản phẩm</span></h4>
                         <table class="timetable_sub">
                             <thead>
                             <tr>
@@ -23,7 +23,7 @@
                                 <th>Số Lượng</th>
                                 <th>Tên Sản Phẩm</th>
 
-                                <th>Giá</th>
+                                <th>Đơn Giá</th>
                                 <th>Xóa</th>
                             </tr>
                             </thead>
@@ -32,7 +32,8 @@
                                 <tr class="rem{{$i+1}}">
                                     <td class="invert">{{$i+1}}</td>
                                     <td class="invert-image" width="400px"><a href="single.html"><img
-                                                    src="{{asset('images/s1.jpg')}}" alt=" " class="img-responsive"></a>
+                                                    src="{{asset("images/menu/$image[$i]")}}" alt=" "
+                                                    class="img-responsive"></a>
                                     </td>
                                     <td class="invert" width="200px">
                                         <div class="quantity">
@@ -45,7 +46,7 @@
                                     </td>
                                     <td class="invert" width="250px">{{$cart_name[$i]}}</td>
 
-                                    <td class="invert" width="200px">{{number_format($amount[$i]*$quantity[$i])}} đ</td>
+                                    <td class="invert" width="200px">{{number_format($amount[$i])}} VND</td>
                                     <td class="invert" width="120px">
                                         <div class="rem">
                                             <div class="close1"></div>
@@ -59,13 +60,13 @@
                     </div>
                     <div class="checkout-left">
                         <div class="col-md-4 checkout-left-basket">
-                            <h4>Continue to basket</h4>
+                            <h4>Hóa Đơn Thanh Toán</h4>
                             <ul>
-                                <li>Product1 <i>-</i> <span>$675.00 </span></li>
-                                <li>Product2 <i>-</i> <span>$325.00 </span></li>
-                                <li>Product3 <i>-</i> <span>$405.00 </span></li>
-                                <li>Total Service Charges <i>-</i> <span>$55.00</span></li>
-                                <li>Total <i>-</i> <span>$1405.00</span></li>
+                                @for ($i = 0; $i < count($cart_name); $i++)
+                                    <li>{{$cart_name[$i]}}<i>-</i>
+                                        <span>{{number_format($amount[$i]*$quantity[$i])}} VND</span></li>
+                                @endfor
+                                <li class="total_price" style="color: #000000">Tổng Cộng<i>-</i> <span>{{number_format($total_amount)}} VND</span></li>
                             </ul>
                         </div>
                         <div class="col-md-8 address_form">
@@ -109,7 +110,7 @@
                                                 </select>
                                             </div>
                                         </div>
-                                        <button class="submit check_out">Delivery to this Address</button>
+                                        <button class="submit check_out">Tiến hành thanh toán</button>
                                     </div>
                                 </section>
                             </form>

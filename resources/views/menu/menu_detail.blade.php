@@ -5,7 +5,34 @@
 @section('about', '')
 @section('main_content')
     <!-- //banner -->
+    <script type="text/javascript">
+        // window.onload = function () {
+        //
+        //     var ex1 = document.getElementById('p1');
+        //     var ex2 = document.getElementById('p2');
+        //     var ex3 = document.getElementById('p3');
+        //
+        //     ex1.onclick = handler1();
+        //     ex2.onclick = handler2;
+        //     ex3.onclick = handler3;
+        //
+        // }
 
+        function handler1() {
+            document.getElementById("people_cnt").value = document.getElementById("p1").value;
+            document.getElementById("people_form").submit();
+        }
+
+        function handler2() {
+            document.getElementById("people_cnt").value = document.getElementById("p2").value;
+            document.getElementById("people_form").submit();
+        }
+
+        function handler3() {
+            document.getElementById("people_cnt").value = document.getElementById("p3").value;
+            document.getElementById("people_form").submit();
+        }
+    </script>
     <!-- top Products -->
     <div class="div_menu_align">
         <div class="ads-grid_shop">
@@ -37,14 +64,21 @@
                     <p><span class="item_price">{{number_format($menu->COST)}} VND</span>
                         {{--<del>$1,199</del>--}}
                     </p>
-                    <div class="rating1">
-                        <ul class="stars">
-                            <li><a href="#"><i class="fa fa-star" aria-hidden="true"></i></a></li>
-                            <li><a href="#"><i class="fa fa-star" aria-hidden="true"></i></a></li>
-                            <li><a href="#"><i class="fa fa-star" aria-hidden="true"></i></a></li>
-                            <li><a href="#"><i class="fa fa-star-half-o" aria-hidden="true"></i></a></li>
-                            <li><a href="#"><i class="fa fa-star-o" aria-hidden="true"></i></a></li>
+                    <p>Danh sách món ăn:</p>
+                    <div class="w3-container">
+                        <ul class="w3-ul">
+                            @foreach ($food_list as $food)
+                                <li>{{$food->FOOD_NAME}}</li>
+                            @endforeach
                         </ul>
+                    </div>
+                    <div class="size_menu">
+                        <label class="radio-inline"><input type="radio" name="people" id='p1' value="8" onclick="handler1()">Bàn 8
+                            Người</label>
+                        <label class="radio-inline"><input type="radio" name="people" id='p2' value="10" onclick="handler2()" checked>Bàn 10
+                            Người</label>
+                        <label class="radio-inline"><input type="radio" name="people" id='p3' value="12" onclick="handler3()">Bàn 12
+                            Người</label>
                     </div>
                     <div class="description">
                         <h5>CODE GIẢM GIÁ</h5>
@@ -55,13 +89,15 @@
                             <input type="submit" value="Check">
                         </form>
                     </div>
-                    <div class="color-quality">
-                        <div class="color-quality-right">
-                            <h5>SỐ LƯỢNG :</h5>
-                            <input style="width: 100px" type="number" name="quantity" onfocus="this.value = '';"
-                                   onblur="if (this.value == '') {this.value = '';}"
-                                   required="">
-                        </div>
+
+                    <div class="rating1">
+                        <ul class="stars">
+                            <li><a href="#"><i class="fa fa-star" aria-hidden="true"></i></a></li>
+                            <li><a href="#"><i class="fa fa-star" aria-hidden="true"></i></a></li>
+                            <li><a href="#"><i class="fa fa-star" aria-hidden="true"></i></a></li>
+                            <li><a href="#"><i class="fa fa-star-half-o" aria-hidden="true"></i></a></li>
+                            <li><a href="#"><i class="fa fa-star-o" aria-hidden="true"></i></a></li>
+                        </ul>
                     </div>
 
                     <div class="occasion-cart">
@@ -72,6 +108,7 @@
                                 <input type="hidden" name="shoe_item" value="{{$menu->MENU_NAME}}">
                                 <input type="hidden" name="amount" value="{{$menu->COST}}">
                                 <input type="submit" name="submit" value="Add to cart" class="button add">
+                                <input type="hidden" name="image" value="{{$menu->IMAGE}}">
                                 <input type="hidden" name="_token" id="csrf-token" value="{{csrf_token()}}">
 
 
@@ -80,6 +117,13 @@
 
                         </div>
                     </div>
+
+                    {{--Form for people--}}
+                    <form id = "people_form" action="/detail" method="post">
+                        <input type="hidden" id="people_cnt" name="people" value="10">
+                        @csrf
+                    </form>
+
                 </div>
                 <div class="clearfix"></div>
                 <!--/tabs-->
