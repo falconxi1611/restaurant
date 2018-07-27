@@ -96,7 +96,7 @@
                 <form action="#" method="post">
                     <div class="col-md-3 form-time-w3layouts">
                         <label><i class="fa fa-clock-o" aria-hidden="true"></i> Giờ :</label>
-                        <input type="time">
+                        <input name="time" type="time">
                     </div>
                     <div class="col-md-3 form-date-w3-agileits">
                         <label><i class="fa fa-calendar" aria-hidden="true"></i> Ngày :</label>
@@ -105,15 +105,7 @@
                     </div>
                     <div class="col-md-3 form-left-agileits-w3layouts ">
                         <label><i class="fa fa-users" aria-hidden="true"></i> Số lượng người :</label>
-                        <select class="form-control">
-                            <option></option>
-                            <option>1 Person</option>
-                            <option>2 People</option>
-                            <option>3 People</option>
-                            <option>4 People</option>
-                            <option>5 People</option>
-                            <option>More</option>
-                        </select>
+                        <input name="quantity" type="text" } required="">
                     </div>
                     <div class="col-md-3 form-left-agileits-submit">
                         <input type="submit" value="ĐẶT TIỆC">

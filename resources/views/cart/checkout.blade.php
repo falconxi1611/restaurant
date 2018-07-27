@@ -20,7 +20,7 @@
                             <tr>
                                 <th>STT</th>
                                 <th>Hình</th>
-                                <th>Số Lượng</th>
+                                <th>Loại</th>
                                 <th>Tên Sản Phẩm</th>
 
                                 <th>Đơn Giá</th>
@@ -35,15 +35,7 @@
                                                     src="{{asset("images/menu/$image[$i]")}}" alt=" "
                                                     class="img-responsive"></a>
                                     </td>
-                                    <td class="invert" width="200px">
-                                        <div class="quantity">
-                                            <div class="quantity-select">
-                                                <div class="entry value-minus">&nbsp;</div>
-                                                <div class="entry value"><span>{{$quantity[$i]}}</span></div>
-                                                <div class="entry value-plus active">&nbsp;</div>
-                                            </div>
-                                        </div>
-                                    </td>
+                                    <td class="invert" width="200px">Bàn {{$people_num[$i]}} người</td>
                                     <td class="invert" width="250px">{{$cart_name[$i]}}</td>
 
                                     <td class="invert" width="200px">{{number_format($amount[$i])}} VND</td>

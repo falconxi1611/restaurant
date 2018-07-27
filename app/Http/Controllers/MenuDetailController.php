@@ -19,23 +19,54 @@ class MenuDetailController extends Controller
 {
     public function showDetail(Request $request)
     {
-        $menu_id = $request->get('menu_id');
+        $menu_id   = $request->get('menu_id');
         $food_list = Food::whereIn('FOOD_ID', Menu_Detail::where('MENU_ID', $menu_id)->get(['FOOD_ID']))->get();
-        if($food_list === null)
+        if ($food_list === null)
         {
             return view('errors/error');
         }
         $this->data['food_list'] = $food_list;
-        $menu = Menu::where('ID', $menu_id)->get();
-        $menu = json_decode($menu)[0];
+        $menu                    = Menu::where('ID', $menu_id)->get();
+        $menu                    = json_decode($menu)[0];
 
         $this->data['menu'] = $menu;
+        $this->data['flg']  = 10;
 
         return view('menu/menu_detail', $this->data);
     }
 
     public function showPeople(Request $request)
     {
-        dd($request->input("people"));
+        $menu_id   = $request->input('ID');
+        $food_list = Food::whereIn('FOOD_ID', Menu_Detail::where('MENU_ID', $menu_id)->get(['FOOD_ID']))->get();
+        if ($food_list === null)
+        {
+            return view('errors/error');
+        }
+        $this->data['food_list'] = $food_list;
+        $menu                    = Menu::where('ID', $menu_id)->get();
+
+        $people = $request->input('people');
+        $flg    = '';
+        if ($people == 8)
+        {
+            $flg           = 8;
+            $menu[0]->COST -= 200000;
+        }
+        else if ($people == 12)
+        {
+            $flg           = 12;
+            $menu[0]->COST += 200000;
+        }
+        else
+        {
+            $flg = 10;
+        }
+
+        $menu               = json_decode($menu)[0];
+        $this->data['menu'] = $menu;
+        $this->data['flg']  = $flg;
+
+        return view('menu/menu_detail', $this->data);
     }
 }

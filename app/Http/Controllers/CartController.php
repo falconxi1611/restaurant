@@ -17,11 +17,12 @@ class CartController extends Controller
 {
     public function show(Request $request)
     {
-        $totalCart = count($request->input());
-        $cart_name = array();
-        $quantity  = array();
-        $amount    = array();
-        $image     = array();
+        $totalCart    = count($request->input());
+        $cart_name    = array();
+        $quantity     = array();
+        $amount       = array();
+        $image        = array();
+        $people       = array();
         $total_amount = 0;
 
         for ($i = 1; $i < $totalCart; $i++)
@@ -54,15 +55,23 @@ class CartController extends Controller
                 $image[] = $img;
             }
 
-            $total_amount +=  $price * $num;
+            $item_name5 = "people_num_" . $i;
+            $people_num = $request->input($item_name5);
+            if ($people_num != "")
+            {
+                $people[] = $people_num;
+            }
+
+            $total_amount += $price * $num;
         }
 
-        $this->data['cart_name'] = $cart_name;
-        $this->data['quantity']  = $quantity;
-        $this->data['amount']    = $amount;
-        $this->data['image']     = $image;
-        $this->data['total']     = count($cart_name);
+        $this->data['cart_name']    = $cart_name;
+        $this->data['quantity']     = $quantity;
+        $this->data['amount']       = $amount;
+        $this->data['image']        = $image;
+        $this->data['total']        = count($cart_name);
         $this->data['total_amount'] = $total_amount;
+        $this->data['people_num']   = $people;
 
         return view('cart/checkout', $this->data);
     }

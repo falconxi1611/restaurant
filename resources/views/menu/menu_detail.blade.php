@@ -6,17 +6,6 @@
 @section('main_content')
     <!-- //banner -->
     <script type="text/javascript">
-        // window.onload = function () {
-        //
-        //     var ex1 = document.getElementById('p1');
-        //     var ex2 = document.getElementById('p2');
-        //     var ex3 = document.getElementById('p3');
-        //
-        //     ex1.onclick = handler1();
-        //     ex2.onclick = handler2;
-        //     ex3.onclick = handler3;
-        //
-        // }
 
         function handler1() {
             document.getElementById("people_cnt").value = document.getElementById("p1").value;
@@ -73,11 +62,14 @@
                         </ul>
                     </div>
                     <div class="size_menu">
-                        <label class="radio-inline"><input type="radio" name="people" id='p1' value="8" onclick="handler1()">Bàn 8
+                        <label class="radio-inline"><input type="radio" name="people" id='p1' value="8"
+                                                           onclick="handler1()"  @if($flg == 8){{'checked'}} @endif">Bàn 8
                             Người</label>
-                        <label class="radio-inline"><input type="radio" name="people" id='p2' value="10" onclick="handler2()" checked>Bàn 10
+                        <label class="radio-inline"><input type="radio" name="people" id='p2' value="10"
+                                                           onclick="handler2()" @if($flg == 10){{'checked'}} @endif?>Bàn 10
                             Người</label>
-                        <label class="radio-inline"><input type="radio" name="people" id='p3' value="12" onclick="handler3()">Bàn 12
+                        <label class="radio-inline"><input type="radio" name="people" id='p3' value="12"
+                                                           onclick="handler3()" @if($flg == 12){{'checked'}} @endif>Bàn 12
                             Người</label>
                     </div>
                     <div class="description">
@@ -109,8 +101,8 @@
                                 <input type="hidden" name="amount" value="{{$menu->COST}}">
                                 <input type="submit" name="submit" value="Add to cart" class="button add">
                                 <input type="hidden" name="image" value="{{$menu->IMAGE}}">
+                                <input type="hidden" name="people_num" value="{{$flg}}">
                                 <input type="hidden" name="_token" id="csrf-token" value="{{csrf_token()}}">
-
 
                                 <a href="#" data-toggle="modal" data-target="#myModal1"></a>
                             </form>
@@ -119,7 +111,8 @@
                     </div>
 
                     {{--Form for people--}}
-                    <form id = "people_form" action="/detail" method="post">
+                    <form id="people_form" action="/detail" method="post">
+                        <input type="hidden" name="ID" value="{{$menu->ID}}">
                         <input type="hidden" id="people_cnt" name="people" value="10">
                         @csrf
                     </form>
@@ -169,12 +162,16 @@
                                         </div>
                                         <div class="add-review">
                                             <h4>add a review</h4>
-                                            <form action="#" method="post">
-                                                <input type="text" name="Name" required="Name">
-                                                <input type="email" name="Email" required="Email">
-                                                <textarea name="Message" required=""></textarea>
-                                                <input type="submit" value="SEND">
-                                            </form>
+
+                                            <div id="fb-root"></div>
+                                            <script>(function(d, s, id) {
+                                                    var js, fjs = d.getElementsByTagName(s)[0];
+                                                    if (d.getElementById(id)) return;
+                                                    js = d.createElement(s); js.id = id;
+                                                    js.src = 'https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v3.0&appId=378495575965068&autoLogAppEvents=1';
+                                                    fjs.parentNode.insertBefore(js, fjs);
+                                                }(document, 'script', 'facebook-jssdk'));</script>
+                                            <div class="fb-comments" width="auto" align="center" data-numposts="4"></div>
                                         </div>
                                     </div>
 
