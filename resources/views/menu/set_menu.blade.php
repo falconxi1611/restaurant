@@ -255,6 +255,7 @@
 																<input type="hidden" name="amount"
 																	   value="{{$menu->COST}}">
 																<input type="hidden" name="people_num" value="10">
+																<input type="hidden" name="num_table" value="">
                                                                 <input type="hidden" name="_token" id="csrf-token" value="{{csrf_token()}}">
 																<button type="submit" class="shoe-cart pshoe-cart"><i
 																			class="fa fa-cart-plus"
