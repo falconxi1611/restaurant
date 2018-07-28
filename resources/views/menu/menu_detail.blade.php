@@ -24,6 +24,16 @@
 
         function quantity_ent(e) {
             if (e.keyCode == 13) {
+                var radios = document.getElementsByName('people');
+
+                for (var i = 0, length = radios.length; i < length; i++)
+                {
+                    if (radios[i].checked)
+                    {
+                        document.getElementById('people_af').value = radios[i].value;
+                        break;
+                    }
+                }
                 document.getElementById("frm_quantity").submit();
             }
         }
@@ -85,13 +95,13 @@
                         <h5>SỐ NGƯỜI</h5>
                         <form id="frm_quantity" action="/detail" method="post">
                             <input type="text" id="quantity" name="quantity" placeholder="Nhập vào số người"
-                                   required="" maxlength="3" style="width: 200px; color: #000000"
+                                   required="" maxlength="3" value="@if($quantity != null) {{$quantity}} @endif" style="width: 200px; color: #000000"
                                    onkeyup="return quantity_ent(event)"> ➤➤
                             <input type="text" name="num_table"
                                    required="" maxlength="3" style="width: 200px; color: #000000" value="{{$num_table}}" readonly><img
                                     src="{{asset('images/table.png')}}" style="margin-left: 10px;color: #000000">
                             <input type="hidden" name="ID" value="{{$menu->ID}}">
-                            <input type="hidden" id="people_cnt" name="people" value="">
+                            <input type="hidden" id="people_af" name="people_after" value="">
                             @csrf
                         </form>
                     </div>
@@ -136,7 +146,7 @@
                     {{--Form for people--}}
                     <form id="people_form" action="/detail" method="post">
                         <input type="hidden" name="ID" value="{{$menu->ID}}">
-                        <input type="hidden" id="people_cnt" name="people" value="10">
+                        <input type="hidden" id="people_cnt" name="people" value="">
                         @csrf
                     </form>
 

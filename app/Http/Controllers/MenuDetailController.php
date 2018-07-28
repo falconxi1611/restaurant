@@ -48,7 +48,12 @@ class MenuDetailController extends Controller
         $menu                    = Menu::where('ID', $menu_id)->get();
 
         $people = $request->input('people');
-        echo "<pre>"; var_dump($request->input()); echo "</pre>"; die;
+        $people_af = $request->input('people_after');
+        if($people_af != null)
+        {
+            $people = $people_af;
+        }
+
         if ($people == 8)
         {
             $flg           = 8;
@@ -63,6 +68,7 @@ class MenuDetailController extends Controller
         {
             $flg = 10;
         }
+
         $menu               = json_decode($menu)[0];
         $quantity           = $request->input('quantity');
 
@@ -75,6 +81,7 @@ class MenuDetailController extends Controller
             $num_table = intval($quantity / $flg) + 1;
         }
 
+
         if ($quantity != null)
         {
             $this->data['num_table'] = $num_table;
@@ -86,6 +93,7 @@ class MenuDetailController extends Controller
 
         $this->data['menu'] = $menu;
         $this->data['flg']  = $flg;
+        $this->data['quantity'] = $quantity;
 
         return view('menu/menu_detail', $this->data);
     }
