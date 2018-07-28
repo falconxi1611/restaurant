@@ -19,20 +19,36 @@ class MenuDetailController extends Controller
 {
     public function showDetail(Request $request)
     {
+        $quantity = session('quantity_people');
+        if (strlen($quantity) != 0)
+        {
+            $this->data['quantity'] = $quantity;
+            if ($quantity % 10 == 0)
+            {
+                $this->data['num_table'] = $quantity / 10;
+            }
+            else
+            {
+                $this->data['num_table'] = intval($quantity / 10) + 1;
+            }
+        }
+        else
+        {
+            $this->data['quantity']  = "";
+            $this->data['num_table'] = "";
+        }
         $menu_id   = $request->get('menu_id');
         $food_list = Food::whereIn('FOOD_ID', Menu_Detail::where('MENU_ID', $menu_id)->get(['FOOD_ID']))->get();
         if ($food_list === null)
         {
             return view('errors/error');
-        }
+    }
         $this->data['food_list'] = $food_list;
         $menu                    = Menu::where('ID', $menu_id)->get();
         $menu                    = json_decode($menu)[0];
 
         $this->data['menu']      = $menu;
         $this->data['flg']       = 10;
-        $this->data['num_table'] = "";
-        $this->data['quantity']  = "";
 
         return view('menu/menu_detail', $this->data);
     }

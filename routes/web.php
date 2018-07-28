@@ -18,6 +18,10 @@ Route::get('/', 'HomeController@showView');
 
 Route::post('/checkout', 'CartController@show');
 
+Route::post('/checkout_remove', 'CartController@remove');
+
+Route::post('/checkout_edit', 'CartController@edit');
+
 Route::post('/payment', 'CartController@payment');
 
 Route::post('/detail', 'MenuDetailController@showPeople');
@@ -27,6 +31,8 @@ Route::get('/about', 'AboutController@showView');
 Route::get('/service', 'ServiceController@showView');
 
 Route::get('/menu', 'MenuTypeController@showView');
+
+Route::post('/booking', 'MenuTypeController@bookTable');
 
 Route::get('/set_menu', 'MenuController@showList');
 

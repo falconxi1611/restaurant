@@ -254,7 +254,7 @@
                                                                        value="{{$menu->IMAGE}}">
 																<input type="hidden" name="amount"
 																	   value="{{$menu->COST}}">
-																<input type="hidden" name="people_num" value="10">
+																<input type="hidden" name="people_num" value="Bàn 10 người">
                                                                 <input type="hidden" name="quantity" value="1">
 																<input type="hidden" name="num_table" value="">
                                                                 <input type="hidden" name="_token" id="csrf-token" value="{{csrf_token()}}">

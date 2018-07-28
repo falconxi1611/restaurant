@@ -93,19 +93,19 @@
             <h2>DELICIOUSNESS JUMPING INTO THE MOUTH!</h2>
             <div class="book-form">
                 <p>ĐẶT TIỆC NGAY</p>
-                <form action="/menu" method="get">
+                <form action="/booking" method="post">
                     <div class="col-md-3 form-time-w3layouts">
                         <label><i class="fa fa-clock-o" aria-hidden="true"></i> Giờ :</label>
                         <input name="time" type="time">
                     </div>
                     <div class="col-md-3 form-date-w3-agileits">
                         <label><i class="fa fa-calendar" aria-hidden="true"></i> Ngày :</label>
-                        <input id="datepicker1" name="Text" type="text" value="mm/dd/yyyy" onfocus="this.value = '';"
+                        <input id="datepicker1" name="date" type="text" value="mm/dd/yyyy" onfocus="this.value = '';"
                                onblur="if (this.value == '') {this.value = 'mm/dd/yyyy';}" required="">
                     </div>
                     <div class="col-md-3 form-left-agileits-w3layouts ">
                         <label><i class="fa fa-users" aria-hidden="true"></i> Số lượng người :</label>
-                        <input name="quantity" type="text" } required="">
+                        <input name="quantity_people" type="text" } required="">
                     </div>
                     @csrf
                     <div class="col-md-3 form-left-agileits-submit">

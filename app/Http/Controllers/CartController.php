@@ -17,7 +17,6 @@ class CartController extends Controller
 {
     public function show(Request $request)
     {
-//        $value = $request->session();
         $totalCart    = count($request->input());
         $cart_name    = array();
         $quantity     = array();
@@ -77,9 +76,76 @@ class CartController extends Controller
         return view('cart/checkout', $this->data);
     }
 
+    public function remove(Request $request)
+    {
+        $id_del     = $request->input('id_del');
+        $cart_name  = $request->input('name');
+        $image      = $request->input('image');
+        $quantity   = $request->input('quantity');
+        $people_num = $request->input('people_num');
+        $amount     = $request->input('amount');
+
+        array_splice($cart_name, $id_del, 1);
+        array_splice($image, $id_del, 1);
+        array_splice($quantity, $id_del, 1);
+        array_splice($people_num, $id_del, 1);
+        array_splice($amount, $id_del, 1);
+
+        $this->data['cart_name']  = $cart_name;
+        $this->data['quantity']   = $quantity;
+        $this->data['amount']     = $amount;
+        $this->data['image']      = $image;
+        $this->data['total']      = count($cart_name);
+        $this->data['people_num'] = $people_num;
+
+        $total_amount = 0;
+        for ($i = 0; $i < count($amount); $i++)
+        {
+            $total_amount = $total_amount + ($amount[$i] * $quantity[$i]);
+        }
+        $this->data['total_amount'] = $total_amount;
+
+        return view('cart/checkout', $this->data);
+    }
+
+    public function edit(Request $request)
+    {
+        $id_edit    = $request->input('id_edit');
+        $new_quantity = $request->input('new_quantity');
+        $cart_name  = $request->input('name');
+        $image      = $request->input('image');
+        $quantity   = $request->input('quantity');
+        $people_num = $request->input('people_num');
+        $amount     = $request->input('amount');
+
+        $total_amount = 0;
+
+        for ($i = 0; $i < count($amount); $i++)
+        {
+            if ($i == $id_edit)
+            {
+                $quantity[$i] = $new_quantity;
+            }
+            $total_amount = $total_amount + ($amount[$i] * $quantity[$i]);
+        }
+
+        $this->data['cart_name']  = $cart_name;
+        $this->data['quantity']   = $quantity;
+        $this->data['amount']     = $amount;
+        $this->data['image']      = $image;
+        $this->data['total']      = count($cart_name);
+        $this->data['people_num'] = $people_num;
+        $this->data['total_amount'] = $total_amount;
+
+        return view('cart/checkout', $this->data);
+    }
+
     public function payment(Request $request)
     {
-        echo "<pre>"; var_dump($request->input()); echo "</pre>"; die;
+        echo "<pre>";
+        var_dump($request->input());
+        echo "</pre>";
+        die;
     }
 
     public function add()

@@ -4,28 +4,40 @@
 @section('menu', 'menu__item--current')
 @section('about', '')
 @section('main_content')
+
     <script type="text/javascript">
-    function validateEmail(email) {
-    var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-    return re.test(email);
-    }
+        function remove(id) {
+            document.getElementById("id_del").value = id;
+            document.getElementById("remove_frm").submit();
+        }
 
-    function validate() {
-    var $result = $("#result");
-    var email = $("#email").val();
-    $result.text("");
+        function edit(id) {
+            document.getElementById("id_edit").value = id;
+            document.getElementById('new_quantity').value = document.getElementById('quantity').value;
+            document.getElementById("edit_frm").submit();
+        }
 
-    if (validateEmail(email)) {
-    $result.text(email + " is valid :)");
-    $result.css("color", "green");
-    } else {
-    $result.text(email + " is not valid :(");
-    $result.css("color", "red");
-    }
-    return false;
-    }
+        function validateEmail(email) {
+            var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+            return re.test(email);
+        }
 
-    $("#validate").bind("click", validate);
+        function validate() {
+            var $result = $("#result");
+            var email = $("#email").val();
+            $result.text("");
+
+            if (validateEmail(email)) {
+                $result.text(email + " is valid :)");
+                $result.css("color", "green");
+            } else {
+                $result.text(email + " is not valid :(");
+                $result.css("color", "red");
+            }
+            return false;
+        }
+
+        $("#validate").bind("click", validate);
 
     </script>
 
@@ -42,26 +54,26 @@
 
             // name
             if (name == '') {
-                document.getElementById("name_error").innerHTML='Vui lòng nhập tên';
+                document.getElementById("name_error").innerHTML = 'Vui lòng nhập tên';
             }
             else {
-                document.getElementById("name_error").innerHTML='';
+                document.getElementById("name_error").innerHTML = '';
             }
 
             // email
             if (email == '') {
-                document.getElementById("email_error").innerHTML='Vui lòng nhập tên';
+                document.getElementById("email_error").innerHTML = 'Vui lòng nhập tên';
             }
             else {
-                document.getElementById("email_error").innerHTML='';
+                document.getElementById("email_error").innerHTML = '';
             }
 
             // address
             if (address == '') {
-                document.getElementById("address_error").innerHTML='Vui lòng nhập tên';
+                document.getElementById("address_error").innerHTML = 'Vui lòng nhập tên';
             }
             else {
-                document.getElementById("address_error").innerHTML='';
+                document.getElementById("address_error").innerHTML = '';
             }
         }
     </script>
@@ -75,44 +87,54 @@
                     <h3>Giỏ<span> Hàng</span></h3>
 
                     <div class="checkout-right">
-                        <h4>Giỏ hàng của bạn hiện có: <span>{{$total}} Sản phẩm</span></h4>
-                        <table class="timetable_sub">
-                            <thead>
-                            <tr>
-                                <th>STT</th>
-                                <th>Hình</th>
-                                <th>Số lượng</th>
-                                <th>Loại</th>
-                                <th>Tên Sản Phẩm</th>
+                        @if($total == 0)
+                            <div class="alert alert-info" style="margin-top: 10px">
+                                <h5>Không có sản phẩm nào trong giỏ hàng.</h5>
+                            </div>
+                        @else
+                            <h4>Giỏ hàng của bạn hiện có: <span>{{$total}} Sản phẩm</span></h4>
+                            <table class="timetable_sub">
+                                <thead>
+                                <tr>
+                                    <th>STT</th>
+                                    <th>Hình</th>
+                                    <th>Số lượng</th>
+                                    <th>Loại</th>
+                                    <th>Tên Sản Phẩm</th>
 
-                                <th>Đơn Giá</th>
-                                <th>Xóa</th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            @for ($i = 0; $i < count($cart_name); $i++)
-                                <tr class="rem{{$i+1}}">
-                                    <td class="invert">{{$i+1}}</td>
-                                    <td class="invert" width="inherit"><a href="single.html"><img
-                                                    src="{{asset("images/menu/$image[$i]")}}" alt=" "
-                                                    class="img-responsive"></a>
-                                    </td>
-                                    <td class="invert" width="200px">{{$quantity[$i]}}</td>
-                                    <td class="invert" width="200px">{{$people_num[$i]}}</td>
-                                    <td class="invert" width="250px">{{$cart_name[$i]}}</td>
-
-                                    <td class="invert" width="200px">{{number_format($amount[$i])}} VND</td>
-                                    <td class="invert" width="120px">
-                                        <div class="rem">
-                                            <div class="close1"></div>
-                                        </div>
-
-                                    </td>
+                                    <th>Đơn Giá</th>
+                                    <th>Xóa</th>
                                 </tr>
-                            @endfor
-                            </tbody>
-                        </table>
+                                </thead>
+                                <tbody>
+                                @for ($i = 0; $i < count($cart_name); $i++)
+                                    <tr class="rem{{$i+1}}">
+                                        <td class="invert">{{$i+1}}</td>
+                                        <td class="invert" width="inherit"><a href="single.html"><img
+                                                        src="{{asset("images/menu/$image[$i]")}}" alt=" "
+                                                        class="img-responsive"></a>
+                                        </td>
+                                        <td class="invert" width="200px"><input id="quantity" type="text"
+                                                                                name="quantity"
+                                                                                style="text-align: center;width: 60px; height: 40px"
+                                                                                maxlength="3" value="{{$quantity[$i]}}"
+                                                                                onkeyup="edit({{$i}})"></td>
+                                        <td class="invert" width="200px">{{$people_num[$i]}}</td>
+                                        <td class="invert" width="250px">{{$cart_name[$i]}}</td>
+
+                                        <td class="invert" width="200px">{{number_format($amount[$i])}} VND</td>
+                                        <td class="invert" width="122px">
+                                            <div class="rem">
+                                                <button type="submit" class="close1" onclick="remove({{$i}})"/>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                @endfor
+                                </tbody>
+                            </table>
+                        @endif
                     </div>
+
                     <div class="checkout-left">
                         <div class="col-md-4 checkout-left-basket">
                             <h4>Hóa Đơn Thanh Toán</h4>
@@ -171,17 +193,17 @@
                                                 </textarea>
                                             </div>
                                             @foreach($cart_name as $name)
-                                            <input type="hidden" name="name[]"
-                                                   value="{{$name}}">
+                                                <input type="hidden" name="name[]"
+                                                       value="{{$name}}">
                                             @endforeach
                                             @foreach($amount as $price)
-                                            <input type="hidden" name="amount[]"
-                                                   value="{{$price}}">
+                                                <input type="hidden" name="amount[]"
+                                                       value="{{$price}}">
                                             @endforeach
 
                                             @foreach($quantity as $num)
-                                            <input type="hidden" name="quantity[]"
-                                                   value="{{$num}}">
+                                                <input type="hidden" name="quantity[]"
+                                                       value="{{$num}}">
                                             @endforeach
                                             @csrf
                                         </div>
@@ -193,7 +215,60 @@
                                 <a href="payment.html">Make a Payment </a>
                             </div>
                         </div>
+                        {{--Remove--}}
+                        <form id="remove_frm" action="/checkout_remove" method="post">
 
+                            <input type="hidden" id="id_del" name="id_del" value="">
+                            @foreach($cart_name as $name)
+                                <input type="hidden" name="name[]"
+                                       value="{{$name}}">
+                            @endforeach
+                            @foreach($image as $img)
+                                <input type="hidden" name="image[]"
+                                       value="{{$img}}">
+                            @endforeach
+                            @foreach($quantity as $num)
+                                <input type="hidden" name="quantity[]"
+                                       value="{{$num}}">
+                            @endforeach
+                            @foreach($people_num as $peo_num)
+                                <input type="hidden" name="people_num[]"
+                                       value="{{$peo_num}}">
+                            @endforeach
+                            @foreach($amount as $price)
+                                <input type="hidden" name="amount[]"
+                                       value="{{$price}}">
+                            @endforeach
+                            @csrf
+                        </form>
+
+                        {{--Edit Cart--}}
+                        <form id="edit_frm" action="/checkout_edit" method="post">
+
+                            <input type="hidden" id="id_edit" name="id_edit" value="">
+                            <input type="hidden" id="new_quantity" name="new_quantity" value="">
+                            @foreach($cart_name as $name)
+                                <input type="hidden" name="name[]"
+                                       value="{{$name}}">
+                            @endforeach
+                            @foreach($image as $img)
+                                <input type="hidden" name="image[]"
+                                       value="{{$img}}">
+                            @endforeach
+                            @foreach($quantity as $num)
+                                <input type="hidden" name="quantity[]"
+                                       value="{{$num}}">
+                            @endforeach
+                            @foreach($people_num as $peo_num)
+                                <input type="hidden" name="people_num[]"
+                                       value="{{$peo_num}}">
+                            @endforeach
+                            @foreach($amount as $price)
+                                <input type="hidden" name="amount[]"
+                                       value="{{$price}}">
+                            @endforeach
+                            @csrf
+                        </form>
                         <div class="clearfix"></div>
 
 
