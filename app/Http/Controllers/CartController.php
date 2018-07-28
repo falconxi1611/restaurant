@@ -17,6 +17,7 @@ class CartController extends Controller
 {
     public function show(Request $request)
     {
+//        $value = $request->session();
         $totalCart    = count($request->input());
         $cart_name    = array();
         $quantity     = array();
@@ -74,6 +75,11 @@ class CartController extends Controller
         $this->data['people_num']   = $people;
 
         return view('cart/checkout', $this->data);
+    }
+
+    public function payment(Request $request)
+    {
+        echo "<pre>"; var_dump($request->input()); echo "</pre>"; die;
     }
 
     public function add()

@@ -18,6 +18,8 @@ Route::get('/', 'HomeController@showView');
 
 Route::post('/checkout', 'CartController@show');
 
+Route::post('/payment', 'CartController@payment');
+
 Route::post('/detail', 'MenuDetailController@showPeople');
 
 Route::get('/about', 'AboutController@showView');

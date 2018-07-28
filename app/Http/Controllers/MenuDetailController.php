@@ -29,9 +29,10 @@ class MenuDetailController extends Controller
         $menu                    = Menu::where('ID', $menu_id)->get();
         $menu                    = json_decode($menu)[0];
 
-        $this->data['menu'] = $menu;
-        $this->data['flg']  = 10;
+        $this->data['menu']      = $menu;
+        $this->data['flg']       = 10;
         $this->data['num_table'] = "";
+        $this->data['quantity']  = "";
 
         return view('menu/menu_detail', $this->data);
     }
@@ -47,9 +48,9 @@ class MenuDetailController extends Controller
         $this->data['food_list'] = $food_list;
         $menu                    = Menu::where('ID', $menu_id)->get();
 
-        $people = $request->input('people');
+        $people    = $request->input('people');
         $people_af = $request->input('people_after');
-        if($people_af != null)
+        if ($people_af != null)
         {
             $people = $people_af;
         }
@@ -69,8 +70,8 @@ class MenuDetailController extends Controller
             $flg = 10;
         }
 
-        $menu               = json_decode($menu)[0];
-        $quantity           = $request->input('quantity');
+        $menu     = json_decode($menu)[0];
+        $quantity = $request->input('quantity');
 
         if ($quantity % $flg == 0)
         {
@@ -91,8 +92,8 @@ class MenuDetailController extends Controller
             $this->data['num_table'] = "";
         }
 
-        $this->data['menu'] = $menu;
-        $this->data['flg']  = $flg;
+        $this->data['menu']     = $menu;
+        $this->data['flg']      = $flg;
         $this->data['quantity'] = $quantity;
 
         return view('menu/menu_detail', $this->data);

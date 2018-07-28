@@ -4,6 +4,67 @@
 @section('menu', 'menu__item--current')
 @section('about', '')
 @section('main_content')
+    <script type="text/javascript">
+    function validateEmail(email) {
+    var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    return re.test(email);
+    }
+
+    function validate() {
+    var $result = $("#result");
+    var email = $("#email").val();
+    $result.text("");
+
+    if (validateEmail(email)) {
+    $result.text(email + " is valid :)");
+    $result.css("color", "green");
+    } else {
+    $result.text(email + " is not valid :(");
+    $result.css("color", "red");
+    }
+    return false;
+    }
+
+    $("#validate").bind("click", validate);
+
+    </script>
+
+    <script type="text/javascript">
+        function check() {
+            var name = document.getElementById('name').value;
+            console.log(name);
+            var email = document.getElementById('email').value;
+            console.log(email);
+            var phone = document.getElementById('phone').value;
+            console.log(phone);
+            var address = document.getElementById('address').value;
+            console.log(address);
+
+            // name
+            if (name == '') {
+                document.getElementById("name_error").innerHTML='Vui lòng nhập tên';
+            }
+            else {
+                document.getElementById("name_error").innerHTML='';
+            }
+
+            // email
+            if (email == '') {
+                document.getElementById("email_error").innerHTML='Vui lòng nhập tên';
+            }
+            else {
+                document.getElementById("email_error").innerHTML='';
+            }
+
+            // address
+            if (address == '') {
+                document.getElementById("address_error").innerHTML='Vui lòng nhập tên';
+            }
+            else {
+                document.getElementById("address_error").innerHTML='';
+            }
+        }
+    </script>
     <div class="checkout_margin">
         {{--Check Out Content--}}
 
@@ -20,6 +81,7 @@
                             <tr>
                                 <th>STT</th>
                                 <th>Hình</th>
+                                <th>Số lượng</th>
                                 <th>Loại</th>
                                 <th>Tên Sản Phẩm</th>
 
@@ -31,10 +93,11 @@
                             @for ($i = 0; $i < count($cart_name); $i++)
                                 <tr class="rem{{$i+1}}">
                                     <td class="invert">{{$i+1}}</td>
-                                    <td class="invert-image" width="400px"><a href="single.html"><img
+                                    <td class="invert" width="inherit"><a href="single.html"><img
                                                     src="{{asset("images/menu/$image[$i]")}}" alt=" "
                                                     class="img-responsive"></a>
                                     </td>
+                                    <td class="invert" width="200px">{{$quantity[$i]}}</td>
                                     <td class="invert" width="200px">Bàn {{$people_num[$i]}} người</td>
                                     <td class="invert" width="250px">{{$cart_name[$i]}}</td>
 
@@ -58,51 +121,71 @@
                                     <li>{{$cart_name[$i]}}<i>-</i>
                                         <span>{{number_format($amount[$i]*$quantity[$i])}} VND</span></li>
                                 @endfor
-                                <li class="total_price" style="color: #000000">Tổng Cộng<i>-</i> <span>{{number_format($total_amount)}} VND</span></li>
+                                <li class="total_price" style="color: #000000">Tổng Cộng<i>-</i> <span>{{number_format($total_amount)}}
+                                        VND</span></li>
                             </ul>
                         </div>
                         <div class="col-md-8 address_form">
-                            <h4>Add a new Details</h4>
-                            <form action="payment.html" method="post" class="creditly-card-form agileinfo_form">
+                            <h4>Thông Tin Khách Hàng</h4>
+                            <form id="payment_frm" action="/payment" method="post"
+                                  class="creditly-card-form agileinfo_form">
                                 <section class="creditly-wrapper wrapper">
                                     <div class="information-wrapper">
                                         <div class="first-row form-group">
                                             <div class="controls">
-                                                <label class="control-label">Full name: </label>
-                                                <input class="billing-address-name form-control" type="text" name="name"
-                                                       placeholder="Full name">
+                                                <label class="control-label">Họ Tên </label>
+                                                <input class="billing-address-name form-control" id="name" type="text"
+                                                       name="name"
+                                                       placeholder="Nhập họ tên">
+                                                <span id="name_error"></span>
                                             </div>
                                             <div class="card_number_grids">
                                                 <div class="card_number_grid_left">
                                                     <div class="controls">
-                                                        <label class="control-label">Mobile number:</label>
-                                                        <input class="form-control" type="text"
-                                                               placeholder="Mobile number">
+                                                        <label class="control-label">Số điện thoại</label>
+                                                        <input class="form-control" id="phone" name="phone" type="text"
+                                                               placeholder="Nhập SĐT">
+                                                        <span id="phone_error"></span>
                                                     </div>
                                                 </div>
                                                 <div class="card_number_grid_right">
                                                     <div class="controls">
-                                                        <label class="control-label">Landmark: </label>
-                                                        <input class="form-control" type="text" placeholder="Landmark">
+                                                        <label class="control-label">Email </label>
+                                                        <input class="form-control" id="email" type="email" id="email"
+                                                               name="email"
+                                                               placeholder="Nhập email">
+                                                        <span id="email_error"></span>
                                                     </div>
                                                 </div>
                                                 <div class="clear"></div>
                                             </div>
                                             <div class="controls">
-                                                <label class="control-label">Town/City: </label>
-                                                <input class="form-control" type="text" placeholder="Town/City">
+                                                <label class="control-label">Địa chỉ </label>
+                                                <input class="form-control" name="address" type="text"
+                                                       placeholder="Nhập địa chỉ">
+                                                <span id="address_error"></span>
                                             </div>
                                             <div class="controls">
-                                                <label class="control-label">Address type: </label>
-                                                <select class="form-control option-w3ls">
-                                                    <option>Office</option>
-                                                    <option>Home</option>
-                                                    <option>Commercial</option>
-
-                                                </select>
+                                                <label class="control-label">Ghi chú </label>
+                                                <textarea class="form-control" name="remark">
+                                                </textarea>
                                             </div>
+                                            @foreach($cart_name as $name)
+                                            <input type="hidden" name="name[]"
+                                                   value="{{$name}}">
+                                            @endforeach
+                                            @foreach($amount as $price)
+                                            <input type="hidden" name="amount[]"
+                                                   value="{{$price}}">
+                                            @endforeach
+
+                                            @foreach($quantity as $num)
+                                            <input type="hidden" name="quantity[]"
+                                                   value="{{$num}}">
+                                            @endforeach
+                                            @csrf
                                         </div>
-                                        <button class="submit check_out">Tiến hành thanh toán</button>
+                                        <button class="submit check_out" onclick="check()">Thanh toán</button>
                                     </div>
                                 </section>
                             </form>

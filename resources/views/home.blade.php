@@ -93,7 +93,7 @@
             <h2>DELICIOUSNESS JUMPING INTO THE MOUTH!</h2>
             <div class="book-form">
                 <p>ĐẶT TIỆC NGAY</p>
-                <form action="#" method="post">
+                <form action="/menu" method="get">
                     <div class="col-md-3 form-time-w3layouts">
                         <label><i class="fa fa-clock-o" aria-hidden="true"></i> Giờ :</label>
                         <input name="time" type="time">
@@ -107,6 +107,7 @@
                         <label><i class="fa fa-users" aria-hidden="true"></i> Số lượng người :</label>
                         <input name="quantity" type="text" } required="">
                     </div>
+                    @csrf
                     <div class="col-md-3 form-left-agileits-submit">
                         <input type="submit" value="ĐẶT TIỆC">
                     </div>

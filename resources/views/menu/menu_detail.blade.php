@@ -95,7 +95,7 @@
                         <h5>SỐ NGƯỜI</h5>
                         <form id="frm_quantity" action="/detail" method="post">
                             <input type="text" id="quantity" name="quantity" placeholder="Nhập vào số người"
-                                   required="" maxlength="3" value="@if($quantity != null) {{$quantity}} @endif" style="width: 200px; color: #000000"
+                                   required="" maxlength="4" value="@if($quantity != null) {{$quantity}} @endif" style="width: 200px; color: #000000"
                                    onkeyup="return quantity_ent(event)"> ➤➤
                             <input type="text" name="num_table"
                                    required="" maxlength="3" style="width: 200px; color: #000000" value="{{$num_table}}" readonly><img
@@ -135,6 +135,7 @@
                                 <input type="submit" name="submit" value="Add to cart" class="button add">
                                 <input type="hidden" name="image" value="{{$menu->IMAGE}}">
                                 <input type="hidden" name="people_num" value="{{$flg}}">
+                                <input type="hidden" name="quantity" value="{{$num_table}}">
                                 <input type="hidden" name="_token" id="csrf-token" value="{{csrf_token()}}">
 
                                 <a href="#" data-toggle="modal" data-target="#myModal1"></a>
