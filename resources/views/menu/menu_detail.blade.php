@@ -134,7 +134,7 @@
                                 <input type="hidden" name="amount" value="{{$menu->COST}}">
                                 <input type="submit" name="submit" value="Add to cart" class="button add">
                                 <input type="hidden" name="image" value="{{$menu->IMAGE}}">
-                                <input type="hidden" name="people_num" value="{{$flg}}">
+                                <input type="hidden" name="people_num" value="{{'Bàn '.$flg.' người'}}">
                                 <input type="hidden" name="quantity" value="{{$num_table}}">
                                 <input type="hidden" name="_token" id="csrf-token" value="{{csrf_token()}}">
 
@@ -159,7 +159,7 @@
                         <ul class="resp-tabs-list">
                             <li>Description</li>
                             <li>Reviews</li>
-                            <li>Information</li>
+                            <li>Service</li>
                         </ul>
                         <div class="resp-tabs-container">
                             <!--/tab_one-->
@@ -214,25 +214,40 @@
                                 </div>
                             </div>
                             <div class="tab3">
+                                {{--SERVICE--}}
+                                <div class="info-product-price">
+                                    <div class="grid_meta">
+                                        <div class="product_price">
+                                            <div class="grid-price "><img src="images/t1.jpg" width="80px" height="50px">
+																	<span class="money ">Bánh Kem 2 Tầng</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="shoe single-item hvr-outline-out">
+                                        <form action="#" method="post">
+                                            <p><span class="item_price">350000 VND</span>
+                                            <input type="hidden" name="cmd" value="_cart">
+                                            <input type="hidden" name="add" value="1">
+                                            <input type="hidden" name="shoe_item"
+                                                   value="Bánh kem 2 Tầng">
+                                            <input type="hidden" name="image"
+                                                   value="{{$menu->IMAGE}}">
+                                            <input type="hidden" name="amount"
+                                                   value="350000">
+                                            <input type="hidden" name="people_num" value="{{'Dịch vụ kèm theo'}}">
+                                            <input type="hidden" name="quantity" value="1">
+                                            <input type="hidden" name="num_table" value="">
+                                            <input type="hidden" name="_token" id="csrf-token" value="{{csrf_token()}}">
+                                            <button type="submit" class="shoe-cart pshoe-cart"><i
+                                                        class="fa fa-cart-plus"
+                                                        aria-hidden="true"></i>
+                                            </button>
 
-                                <div class="single_page">
-                                    <h6>Shoe Rock Vision(SRV) Sneakers (Blue)</h6>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elPellentesque vehicula augue
-                                        eget nisl ullamcorper, molestie
-                                        blandit ipsum auctor. Mauris volutpat augue dolor.Consectetur adipisicing elit,
-                                        sed
-                                        do eiusmod tempor incididunt
-                                        ut lab ore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
-                                        exercitation ullamco. labore et dolore
-                                        magna aliqua.</p>
-                                    <p class="para">Lorem ipsum dolor sit amet, consectetur adipisicing elPellentesque
-                                        vehicula augue eget nisl ullamcorper, molestie
-                                        blandit ipsum auctor. Mauris volutpat augue dolor.Consectetur adipisicing elit,
-                                        sed
-                                        do eiusmod tempor incididunt
-                                        ut lab ore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
-                                        exercitation ullamco. labore et dolore
-                                        magna aliqua.</p>
+                                            <a href="#" data-toggle="modal"
+                                               data-target="#myModal1"></a>
+                                        </form>
+
+                                    </div>
                                 </div>
                             </div>
                         </div>

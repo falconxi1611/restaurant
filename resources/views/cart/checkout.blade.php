@@ -98,7 +98,7 @@
                                                     class="img-responsive"></a>
                                     </td>
                                     <td class="invert" width="200px">{{$quantity[$i]}}</td>
-                                    <td class="invert" width="200px">Bàn {{$people_num[$i]}} người</td>
+                                    <td class="invert" width="200px">{{$people_num[$i]}}</td>
                                     <td class="invert" width="250px">{{$cart_name[$i]}}</td>
 
                                     <td class="invert" width="200px">{{number_format($amount[$i])}} VND</td>
