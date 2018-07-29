@@ -24,6 +24,8 @@ Route::post('/checkout_edit', 'CartController@edit');
 
 Route::post('/payment', 'CartController@payment');
 
+Route::post('/pay', 'CartController@add');
+
 Route::post('/detail', 'MenuDetailController@showPeople');
 
 Route::get('/about', 'AboutController@showView');

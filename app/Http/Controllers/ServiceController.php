@@ -8,12 +8,13 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Routing\Controller as BaseController;
+use App\Service;
+use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
 
-namespace App\Http\Controllers;
 
 
-class ServiceController
+class ServiceController extends Controller
 {
     public function showView()
     {

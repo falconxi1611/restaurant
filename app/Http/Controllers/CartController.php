@@ -18,6 +18,7 @@ class CartController extends Controller
     public function show(Request $request)
     {
         $totalCart    = count($request->input());
+        $id_menu      = array();
         $cart_name    = array();
         $quantity     = array();
         $amount       = array();
@@ -27,6 +28,13 @@ class CartController extends Controller
 
         for ($i = 1; $i < $totalCart; $i++)
         {
+            $item_name0 = "id_menu_" . $i;
+            $id         = $request->input($item_name0);
+            if ($id != "")
+            {
+                $id_menu[] = $id;
+            }
+
             $item_name1 = "shoe_item_" . $i;
             $name       = $request->input($item_name1);
             if ($name != "")
@@ -65,6 +73,7 @@ class CartController extends Controller
             $total_amount += $price * $num;
         }
 
+        $this->data['id_menu']      = $id_menu;
         $this->data['cart_name']    = $cart_name;
         $this->data['quantity']     = $quantity;
         $this->data['amount']       = $amount;
@@ -79,18 +88,21 @@ class CartController extends Controller
     public function remove(Request $request)
     {
         $id_del     = $request->input('id_del');
+        $id_menu    = $request->input('id_menu');
         $cart_name  = $request->input('name');
         $image      = $request->input('image');
         $quantity   = $request->input('quantity');
         $people_num = $request->input('people_num');
         $amount     = $request->input('amount');
 
+        array_splice($id_menu, $id_del, 1);
         array_splice($cart_name, $id_del, 1);
         array_splice($image, $id_del, 1);
         array_splice($quantity, $id_del, 1);
         array_splice($people_num, $id_del, 1);
         array_splice($amount, $id_del, 1);
 
+        $this->data['id_menu']  = $id_menu;
         $this->data['cart_name']  = $cart_name;
         $this->data['quantity']   = $quantity;
         $this->data['amount']     = $amount;
@@ -110,13 +122,14 @@ class CartController extends Controller
 
     public function edit(Request $request)
     {
-        $id_edit    = $request->input('id_edit');
+        $id_edit      = $request->input('id_edit');
         $new_quantity = $request->input('new_quantity');
-        $cart_name  = $request->input('name');
-        $image      = $request->input('image');
-        $quantity   = $request->input('quantity');
-        $people_num = $request->input('people_num');
-        $amount     = $request->input('amount');
+        $id_menu      = $request->input('id_menu');
+        $cart_name    = $request->input('name');
+        $image        = $request->input('image');
+        $quantity     = $request->input('quantity');
+        $people_num   = $request->input('people_num');
+        $amount       = $request->input('amount');
 
         $total_amount = 0;
 
@@ -129,12 +142,13 @@ class CartController extends Controller
             $total_amount = $total_amount + ($amount[$i] * $quantity[$i]);
         }
 
-        $this->data['cart_name']  = $cart_name;
-        $this->data['quantity']   = $quantity;
-        $this->data['amount']     = $amount;
-        $this->data['image']      = $image;
-        $this->data['total']      = count($cart_name);
-        $this->data['people_num'] = $people_num;
+        $this->data['id_menu']      = $id_menu;
+        $this->data['cart_name']    = $cart_name;
+        $this->data['quantity']     = $quantity;
+        $this->data['amount']       = $amount;
+        $this->data['image']        = $image;
+        $this->data['total']        = count($cart_name);
+        $this->data['people_num']   = $people_num;
         $this->data['total_amount'] = $total_amount;
 
         return view('cart/checkout', $this->data);
@@ -142,14 +156,18 @@ class CartController extends Controller
 
     public function payment(Request $request)
     {
-        echo "<pre>";
-        var_dump($request->input());
-        echo "</pre>";
-        die;
+        $input = $request->input();
+        session(['input' => $input]);
+
+        return view('cart/payment');
     }
 
     public function add()
     {
+        echo "<pre>";
+        var_dump(session('input')['name']);
+        echo "</pre>";
+        die;
         $p                     = new Order;
         $p->CUSTOMER_ID        = 1;
         $p->MENU_ID            = 1;

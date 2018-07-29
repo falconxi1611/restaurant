@@ -26,10 +26,8 @@
             if (e.keyCode == 13) {
                 var radios = document.getElementsByName('people');
 
-                for (var i = 0, length = radios.length; i < length; i++)
-                {
-                    if (radios[i].checked)
-                    {
+                for (var i = 0, length = radios.length; i < length; i++) {
+                    if (radios[i].checked) {
                         document.getElementById('people_af').value = radios[i].value;
                         break;
                     }
@@ -95,10 +93,12 @@
                         <h5>SỐ NGƯỜI</h5>
                         <form id="frm_quantity" action="/detail" method="post">
                             <input type="text" id="quantity" name="quantity" placeholder="Nhập vào số người"
-                                   required="" maxlength="4" value="@if($quantity != null) {{$quantity}} @endif" style="width: 200px; color: #000000"
+                                   required="" maxlength="4" value="@if($quantity != null) {{$quantity}} @endif"
+                                   style="width: 200px; color: #000000"
                                    onkeyup="return quantity_ent(event)"> ➤➤
                             <input type="text" name="num_table"
-                                   required="" maxlength="3" style="width: 200px; color: #000000" value="{{$num_table}}" readonly><img
+                                   required="" maxlength="3" style="width: 200px; color: #000000" value="{{$num_table}}"
+                                   readonly><img
                                     src="{{asset('images/table.png')}}" style="margin-left: 10px;color: #000000">
                             <input type="hidden" name="ID" value="{{$menu->ID}}">
                             <input type="hidden" id="people_af" name="people_after" value="">
@@ -106,14 +106,14 @@
                         </form>
                     </div>
 
-                    <div class="description">
-                        <h5>CODE GIẢM GIÁ</h5>
-                        <form action="#" method="post">
-                            <input type="text" name="code" value="Nhập mã code"
-                                   required="">
-                            <input type="submit" value="Check">
-                        </form>
-                    </div>
+                    {{--<div class="description">--}}
+                    {{--<h5>CODE GIẢM GIÁ</h5>--}}
+                    {{--<form action="#" method="post">--}}
+                    {{--<input type="text" name="code" value="Nhập mã code"--}}
+                    {{--required="">--}}
+                    {{--<input type="submit" value="Check">--}}
+                    {{--</form>--}}
+                    {{--</div>--}}
 
                     <div class="rating1">
                         <ul class="stars">
@@ -130,6 +130,7 @@
                             <form action="#" method="post">
                                 <input type="hidden" name="cmd" value="_cart">
                                 <input type="hidden" name="add" value="1">
+                                <input type="hidden" name="id_menu" value="{{$menu->ID}}">
                                 <input type="hidden" name="shoe_item" value="{{$menu->MENU_NAME}}">
                                 <input type="hidden" name="amount" value="{{$menu->COST}}">
                                 <input type="submit" name="submit" value="Add to cart" class="button add">
@@ -215,40 +216,46 @@
                             </div>
                             <div class="tab3">
                                 {{--SERVICE--}}
-                                <div class="info-product-price">
-                                    <div class="grid_meta">
-                                        <div class="product_price">
-                                            <div class="grid-price "><img src="images/t1.jpg" width="80px" height="50px">
-																	<span class="money ">Bánh Kem 2 Tầng</span>
+                                @foreach($service as $sr)
+                                    <div class="info-product-price">
+                                        <div class="grid_meta">
+                                            <div class="product_price">
+                                                <div class="grid-price "><img src="{{asset("images/menu/$sr->IMAGE")}}" width="80px"
+                                                                              height="50px">
+                                                    <span class="money ">{{$sr->SERVICE_NAME}}</span>
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
-                                    <div class="shoe single-item hvr-outline-out">
-                                        <form action="#" method="post">
-                                            <p><span class="item_price">350000 VND</span>
-                                            <input type="hidden" name="cmd" value="_cart">
-                                            <input type="hidden" name="add" value="1">
-                                            <input type="hidden" name="shoe_item"
-                                                   value="Bánh kem 2 Tầng">
-                                            <input type="hidden" name="image"
-                                                   value="{{$menu->IMAGE}}">
-                                            <input type="hidden" name="amount"
-                                                   value="350000">
-                                            <input type="hidden" name="people_num" value="{{'Dịch vụ kèm theo'}}">
-                                            <input type="hidden" name="quantity" value="1">
-                                            <input type="hidden" name="num_table" value="">
-                                            <input type="hidden" name="_token" id="csrf-token" value="{{csrf_token()}}">
-                                            <button type="submit" class="shoe-cart pshoe-cart"><i
-                                                        class="fa fa-cart-plus"
-                                                        aria-hidden="true"></i>
-                                            </button>
+                                        <div class="shoe single-item hvr-outline-out">
+                                            <form action="#" method="post">
+                                                <p><span class="item_price">{{number_format($sr->COST)}} VND</span>
+                                                    <input type="hidden" name="cmd" value="_cart">
+                                                    <input type="hidden" name="add" value="1">
+                                                    <input type="hidden" name="id_menu" value="{{$sr->SERVICE_ID}}">
+                                                    <input type="hidden" name="shoe_item"
+                                                           value="{{$sr->SERVICE_NAME}}">
+                                                    <input type="hidden" name="image"
+                                                           value="{{$sr->IMAGE}}">
+                                                    <input type="hidden" name="amount"
+                                                           value="{{$sr->COST}}">
+                                                    <input type="hidden" name="people_num"
+                                                           value="{{'Dịch vụ kèm theo'}}">
+                                                    <input type="hidden" name="quantity" value="1">
+                                                    <input type="hidden" name="num_table" value="">
+                                                    <input type="hidden" name="_token" id="csrf-token"
+                                                           value="{{csrf_token()}}">
+                                                    <button type="submit" class="shoe-cart pshoe-cart"><i
+                                                                class="fa fa-cart-plus"
+                                                                aria-hidden="true"></i>
+                                                    </button>
 
-                                            <a href="#" data-toggle="modal"
-                                               data-target="#myModal1"></a>
-                                        </form>
+                                                    <a href="#" data-toggle="modal"
+                                                       data-target="#myModal1"></a>
+                                            </form>
 
+                                        </div>
                                     </div>
-                                </div>
+                                @endforeach
                             </div>
                         </div>
                     </div>

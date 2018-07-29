@@ -12,6 +12,7 @@ use App\Http\Controllers\Controller;
 use App\Menu_Detail;
 use App\Food;
 use App\Menu;
+use App\Service;
 
 use Illuminate\Http\Request;
 
@@ -49,6 +50,9 @@ class MenuDetailController extends Controller
 
         $this->data['menu']      = $menu;
         $this->data['flg']       = 10;
+
+        $service = Service::all();
+        $this->data['service'] = $service;
 
         return view('menu/menu_detail', $this->data);
     }
@@ -111,6 +115,9 @@ class MenuDetailController extends Controller
         $this->data['menu']     = $menu;
         $this->data['flg']      = $flg;
         $this->data['quantity'] = $quantity;
+
+        $service = Service::all();
+        $this->data['service'] = $service;
 
         return view('menu/menu_detail', $this->data);
     }

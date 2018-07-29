@@ -196,15 +196,16 @@
                                                 <input type="hidden" name="name[]"
                                                        value="{{$name}}">
                                             @endforeach
-                                            @foreach($amount as $price)
-                                                <input type="hidden" name="amount[]"
-                                                       value="{{$price}}">
+                                            @foreach($people_num as $type)
+                                                <input type="hidden" name="type[]"
+                                                       value="{{$type}}">
                                             @endforeach
 
-                                            @foreach($quantity as $num)
-                                                <input type="hidden" name="quantity[]"
-                                                       value="{{$num}}">
+                                            @foreach($id_menu as $id)
+                                                <input type="hidden" name="id[]"
+                                                       value="{{$id}}">
                                             @endforeach
+                                            <input type="hidden" name="total_amount" value="{{$total_amount}}">
                                             @csrf
                                         </div>
                                         <button class="submit check_out" onclick="check()">Thanh toán</button>
@@ -219,6 +220,11 @@
                         <form id="remove_frm" action="/checkout_remove" method="post">
 
                             <input type="hidden" id="id_del" name="id_del" value="">
+                            @foreach($id_menu as $id)
+                                <input type="hidden" name="id_menu[]"
+                                       value="{{$id}}">
+                            @endforeach
+
                             @foreach($cart_name as $name)
                                 <input type="hidden" name="name[]"
                                        value="{{$name}}">
@@ -247,6 +253,10 @@
 
                             <input type="hidden" id="id_edit" name="id_edit" value="">
                             <input type="hidden" id="new_quantity" name="new_quantity" value="">
+                            @foreach($id_menu as $id)
+                                <input type="hidden" name="id_menu[]"
+                                       value="{{$id}}">
+                            @endforeach
                             @foreach($cart_name as $name)
                                 <input type="hidden" name="name[]"
                                        value="{{$name}}">
