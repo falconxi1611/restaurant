@@ -12,6 +12,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Cart;
 use App\Order;
+use App\Customer_Info;
+use App\Service;
 
 class CartController extends Controller
 {
@@ -102,7 +104,7 @@ class CartController extends Controller
         array_splice($people_num, $id_del, 1);
         array_splice($amount, $id_del, 1);
 
-        $this->data['id_menu']  = $id_menu;
+        $this->data['id_menu']    = $id_menu;
         $this->data['cart_name']  = $cart_name;
         $this->data['quantity']   = $quantity;
         $this->data['amount']     = $amount;
@@ -156,36 +158,109 @@ class CartController extends Controller
 
     public function payment(Request $request)
     {
-        $input = $request->input();
+        $total_amount = $request->input('total_amount');
+        $input        = $request->input();
         session(['input' => $input]);
+        $this->data['total_amount'] = $total_amount;
 
-        return view('cart/payment');
+        return view('cart/payment', $this->data);
     }
 
-    public function add()
+    public function add(Request $request)
     {
-        echo "<pre>";
-        var_dump(session('input')['name']);
-        echo "</pre>";
-        die;
-        $p                     = new Order;
-        $p->CUSTOMER_ID        = 1;
-        $p->MENU_ID            = 1;
-        $p->NUMBER_OF_TABLE    = 50;
-        $p->NUMBER_OF_CUSTOMER = 100;
-        $p->ORDER_DATE         = '2018-07-25';
-        $p->TIME_DATE          = '12:00';
-        $p->TOTAL_AMOUNT       = 1300000;
-        $p->DISCOUNT           = 0;
-        $p->DEPOSIT            = 500000;
-        $p->REST_MONEY         = 600000;
-        $p->PAYMENT_METHOD     = 1;
-        $p->STATUS             = 0;
+        $deposit    = $request->input('deposit');
+        $num_people = session('num_people');
+//        var_dump(session('input'));
+//        die;
+        if (session('input')['fullname'] != null)
+        {
+            $fullname = session('input')['fullname'];
+        }
+        if (session('input')['phone'] != null)
+        {
+            $phone = session('input')['phone'];
+        }
+        if (session('input')['email'] != null)
+        {
+            $email = session('input')['email'];
+        }
+        if (session('input')['address'] != null)
+        {
+            $address = session('input')['address'];
+        }
+        $remark = session('input')['address'];
 
-        $p->save();
-        echo "<pre>";
-        var_dump("OK");
-        echo "</pre>";
-        die;
+        $cart_id        = session('input')['id'];
+        $cart_name      = session('input')['name'];
+        $type           = session('input')['type'];
+        $quantity_table = session('input')['quantity_table'];
+
+        $total_amount   = session('input')['total_amount'];
+
+        //Insert Customer Info
+        $email_flg = Customer_Info::where('EMAIL', $email)->get(['EMAIL']);
+        $point_new = $total_amount * 0.00001;
+        if (count($email_flg) != null)
+        {
+            $point_old = Customer_Info::where('EMAIL', $email)->get();
+            foreach ($point_old as $p)
+            {
+                $pnt_old = $p->POINT;
+            }
+            $update_point = Customer_Info::where('EMAIL', $email);
+            $update_point->update(['POINT' => ($pnt_old + $point_new)]);
+        }
+        else
+        {
+            $cus                = new Customer_Info;
+            $cus->CUSTOMER_NAME = $fullname;
+            $cus->EMAIL         = $email;
+            $cus->ADDRESS       = $address;
+            $cus->PHONE         = $phone;
+            $cus->POINT         = $point_new;
+            $cus->save();
+        }
+
+        //Insert ORDER
+        $id_cus = Customer_Info::where('EMAIL', $email)->get();
+        foreach ($id_cus as $cus)
+        {
+            $id = $cus->CUSTOMER_ID;
+        }
+
+        for ($i = 0; $i < count($cart_id); $i++)
+        {
+           if($type[$i] != "Dịch vụ kèm theo")
+           {
+                $id_cart = $cart_id[$i];
+                break;
+           }
+        }
+
+        $order = new Order;
+        $order->CUSTOMER_ID = $id;
+        $order->MENU_ID = $id_cart;
+        $order->NUMBER_OF_CUSTOMER = $num_people;
+        $order->NUMBER_OF_TABLE = $quantity_table;
+
+        //        $p                     = new Order;
+//        $p->CUSTOMER_ID        = 1;
+//        $p->MENU_ID            = 1;
+//        $p->NUMBER_OF_TABLE    = 50;
+//        $p->NUMBER_OF_CUSTOMER = 100;
+//        $p->ORDER_DATE         = '2018-07-25';
+//        $p->TIME_DATE          = '12:00';
+//        $p->TOTAL_AMOUNT       = 1300000;
+//        $p->DISCOUNT           = 0;
+//        $p->DEPOSIT            = 500000;
+//        $p->REST_MONEY         = 600000;
+//        $p->PAYMENT_METHOD     = 1;
+//        $p->STATUS             = 0;
+//
+//        $p->save();
+//        echo "<pre>";
+//        var_dump("OK");
+//        echo "</pre>";
+//        die;
     }
 }

@@ -106,15 +106,6 @@
                         </form>
                     </div>
 
-                    {{--<div class="description">--}}
-                    {{--<h5>CODE GIẢM GIÁ</h5>--}}
-                    {{--<form action="#" method="post">--}}
-                    {{--<input type="text" name="code" value="Nhập mã code"--}}
-                    {{--required="">--}}
-                    {{--<input type="submit" value="Check">--}}
-                    {{--</form>--}}
-                    {{--</div>--}}
-
                     <div class="rating1">
                         <ul class="stars">
                             <li><a href="#"><i class="fa fa-star" aria-hidden="true"></i></a></li>

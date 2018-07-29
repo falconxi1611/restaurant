@@ -156,8 +156,8 @@
                                         <div class="first-row form-group">
                                             <div class="controls">
                                                 <label class="control-label">Họ Tên </label>
-                                                <input class="billing-address-name form-control" id="name" type="text"
-                                                       name="name"
+                                                <input class="billing-address-name form-control" id="fullname" type="text"
+                                                       name="fullname"
                                                        placeholder="Nhập họ tên">
                                                 <span id="name_error"></span>
                                             </div>
@@ -205,6 +205,12 @@
                                                 <input type="hidden" name="id[]"
                                                        value="{{$id}}">
                                             @endforeach
+
+                                            @foreach($quantity as $num)
+                                                <input type="hidden" name="quantity_table[]"
+                                                       value="{{$num}}">
+                                            @endforeach
+
                                             <input type="hidden" name="total_amount" value="{{$total_amount}}">
                                             @csrf
                                         </div>

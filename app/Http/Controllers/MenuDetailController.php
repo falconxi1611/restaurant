@@ -43,15 +43,15 @@ class MenuDetailController extends Controller
         if ($food_list === null)
         {
             return view('errors/error');
-    }
+        }
         $this->data['food_list'] = $food_list;
         $menu                    = Menu::where('ID', $menu_id)->get();
         $menu                    = json_decode($menu)[0];
 
-        $this->data['menu']      = $menu;
-        $this->data['flg']       = 10;
+        $this->data['menu'] = $menu;
+        $this->data['flg']  = 10;
 
-        $service = Service::all();
+        $service               = Service::all();
         $this->data['service'] = $service;
 
         return view('menu/menu_detail', $this->data);
@@ -115,8 +115,9 @@ class MenuDetailController extends Controller
         $this->data['menu']     = $menu;
         $this->data['flg']      = $flg;
         $this->data['quantity'] = $quantity;
+        session(['num_people' => $quantity]);
 
-        $service = Service::all();
+        $service               = Service::all();
         $this->data['service'] = $service;
 
         return view('menu/menu_detail', $this->data);
