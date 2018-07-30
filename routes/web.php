@@ -62,6 +62,7 @@ Route::get('/icon', function () {
     return view('icon/icon');
 });
 
+
 Route::get('/read', function () {
     $users = DB::table('MENU')->select('MENU_NAME')->get();
     return $users;

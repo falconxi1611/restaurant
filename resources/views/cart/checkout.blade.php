@@ -76,7 +76,10 @@
                 document.getElementById("address_error").innerHTML = '';
             }
         }
+
     </script>
+
+
     <div class="checkout_margin">
         {{--Check Out Content--}}
 
@@ -182,11 +185,24 @@
                                                 <div class="clear"></div>
                                             </div>
                                             <div class="controls">
+                                                <label class="control-label">Ngày đặt tiệc</label>
+                                                <input class="form-control" name="date_order" type="text" value="@if($date_order != null) {{$date_order}} @else {{''}} @endif">
+                                                <span id="address_error"></span>
+                                            </div>
+
+                                            <div class="controls">
+                                                <label class="control-label">Giờ</label>
+                                                <input class="form-control" name="date_time" type="text" value="@if($time_order != null) {{$time_order}} @else {{''}} @endif">
+                                                <span id="address_error"></span>
+                                            </div>
+
+                                            <div class="controls">
                                                 <label class="control-label">Địa chỉ </label>
                                                 <input class="form-control" name="address" type="text"
                                                        placeholder="Nhập địa chỉ">
                                                 <span id="address_error"></span>
                                             </div>
+
                                             <div class="controls">
                                                 <label class="control-label">Ghi chú </label>
                                                 <textarea class="form-control" name="remark">
@@ -214,7 +230,7 @@
                                             <input type="hidden" name="total_amount" value="{{$total_amount}}">
                                             @csrf
                                         </div>
-                                        <button class="submit check_out" onclick="check()">Thanh toán</button>
+                                        <button type="submit" class="submit check_out" onclick="check()">Thanh toán</button>
                                     </div>
                                 </section>
                             </form>

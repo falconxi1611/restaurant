@@ -29,7 +29,7 @@ class MenuTypeController extends Controller
     {
         session(['time' => $request->input("time")]);
         session(['date' => $request->input("date")]);
-        session(['quantity_people' => $request->input("quantity_people")]);
+        session(['num_people' => $request->input("quantity_people")]);
 
         $list_type               = Menu_Type::all();
         $this->data['menu_type'] = $list_type;

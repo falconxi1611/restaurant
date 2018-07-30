@@ -13,7 +13,7 @@ use Illuminate\Http\Request;
 use Cart;
 use App\Order;
 use App\Customer_Info;
-use App\Service;
+use App\Service_Detail;
 
 class CartController extends Controller
 {
@@ -83,6 +83,15 @@ class CartController extends Controller
         $this->data['total']        = count($cart_name);
         $this->data['total_amount'] = $total_amount;
         $this->data['people_num']   = $people;
+        if (session('date') != null)
+        {
+            $this->data['date_order'] = session('date');
+        }
+        if (session('time') != null)
+        {
+            $this->data['time_order'] = session('time');
+        }
+
 
         return view('cart/checkout', $this->data);
     }
@@ -169,9 +178,9 @@ class CartController extends Controller
     public function add(Request $request)
     {
         $deposit    = $request->input('deposit');
+        $discount   = 0;
         $num_people = session('num_people');
-//        var_dump(session('input'));
-//        die;
+
         if (session('input')['fullname'] != null)
         {
             $fullname = session('input')['fullname'];
@@ -195,7 +204,8 @@ class CartController extends Controller
         $type           = session('input')['type'];
         $quantity_table = session('input')['quantity_table'];
 
-        $total_amount   = session('input')['total_amount'];
+        $total_amount = session('input')['total_amount'];
+        $date_order   = date('Y-m-d', strtotime(session('date')));
 
         //Insert Customer Info
         $email_flg = Customer_Info::where('EMAIL', $email)->get(['EMAIL']);
@@ -230,37 +240,47 @@ class CartController extends Controller
 
         for ($i = 0; $i < count($cart_id); $i++)
         {
-           if($type[$i] != "Dịch vụ kèm theo")
-           {
-                $id_cart = $cart_id[$i];
+            if ($type[$i] != "Dịch vụ kèm theo")
+            {
+                $id_cart        = $cart_id[$i];
+                $quantity_table = $quantity_table[$i];
                 break;
-           }
+            }
         }
 
-        $order = new Order;
-        $order->CUSTOMER_ID = $id;
-        $order->MENU_ID = $id_cart;
-        $order->NUMBER_OF_CUSTOMER = $num_people;
-        $order->NUMBER_OF_TABLE = $quantity_table;
-
-        //        $p                     = new Order;
-//        $p->CUSTOMER_ID        = 1;
-//        $p->MENU_ID            = 1;
-//        $p->NUMBER_OF_TABLE    = 50;
-//        $p->NUMBER_OF_CUSTOMER = 100;
-//        $p->ORDER_DATE         = '2018-07-25';
-//        $p->TIME_DATE          = '12:00';
-//        $p->TOTAL_AMOUNT       = 1300000;
-//        $p->DISCOUNT           = 0;
-//        $p->DEPOSIT            = 500000;
-//        $p->REST_MONEY         = 600000;
-//        $p->PAYMENT_METHOD     = 1;
-//        $p->STATUS             = 0;
 //
-//        $p->save();
-//        echo "<pre>";
-//        var_dump("OK");
-//        echo "</pre>";
-//        die;
+        $order                     = new Order;
+        $order->CUSTOMER_ID        = $id;
+        $order->MENU_ID            = $id_cart;
+        $order->NUMBER_OF_CUSTOMER = $num_people;
+        $order->NUMBER_OF_TABLE    = $quantity_table;
+        $order->NUMBER_OF_CUSTOMER = $num_people;
+        $order->ORDER_DATE         = $date_order;
+        $order->TIME_DATE          = session('time');
+        $order->TOTAL_AMOUNT       = $total_amount;
+        $order->DISCOUNT           = $discount;
+        $order->DEPOSIT            = $deposit;
+        $order->REST_MONEY         = ($total_amount - $discount - $deposit);
+        $order->REMARK             = $remark;
+        $order->save();
+
+//       Insert SERVICE DETAIL
+        $id = Order::orderBy('ORDER_ID', 'DESC')->get(['ORDER_ID'])->first();
+        $id = json_decode($id);
+        $id = $id->ORDER_ID;
+
+        for ($i = 0; $i < count($cart_id); $i++)
+        {
+            if ($type[$i] == "Dịch vụ kèm theo")
+            {
+                $sd             = new Service_Detail;
+                $sd->SERVICE_ID = $cart_id[$i];
+                $sd->ORDER_ID   = $id + 1;
+                $sd->save();
+                $id++;
+            }
+        }
+
+        return view('success');
     }
 }

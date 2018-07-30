@@ -20,7 +20,7 @@ class MenuDetailController extends Controller
 {
     public function showDetail(Request $request)
     {
-        $quantity = session('quantity_people');
+        $quantity = session('num_people');
         if (strlen($quantity) != 0)
         {
             $this->data['quantity'] = $quantity;
