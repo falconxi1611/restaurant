@@ -11,8 +11,8 @@
 <link href="//fonts.googleapis.com/css?family=Monoton" rel="stylesheet">
 <!-- /fonts -->
 <!-- css -->
-<link href="{{URL::asse'css/font-awesome.min.css'}}rel="stylesheet" type="text/css" media="all" />
-<link href="css/style.css" rel='stylesheet' type='text/css' media="all" />
+<link href="{{URL::asset('css/font-awesome.min.css')}}" rel="stylesheet" type="text/css" media="all" />
+<link href="{{URL::asset('css/signup.css')}}" rel='stylesheet' type='text/css' media="all" />
 <!-- /css -->
 </head>
 <body>
