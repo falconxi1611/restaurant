@@ -30,8 +30,13 @@
         }
         document.onload = init();
     </SCRIPT>
-    <div class="alert alert-success" role="alert">
-        <h3>Thành Công !</h3> Quý khách vui lòng check mail đơn hàng
-        <h6>Trang sẽ tự chuyển sau <span id="timecount"></span> giây!</h6>
+
+
+    <div class="checkout_margin">
+        {{--Check Out Content--}}
+        <div class="alert alert-success" role="alert">
+            <h3>Thành Công !</h3> Quý khách vui lòng check mail đơn hàng
+            <h6>Trang sẽ tự chuyển sau <span id="timecount"></span> giây!</h6>
+        </div>
     </div>
 @endsection

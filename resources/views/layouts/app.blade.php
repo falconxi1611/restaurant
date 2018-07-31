@@ -8,7 +8,8 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
 	<meta name="keywords"/>
-	<script type="application/x-javascript"> addEventListener("load", function () {
+    <script type="text/javascript" src="{{URL::asset('js/jquery-2.1.4.min.js')}}"></script>
+    <script type="application/x-javascript"> addEventListener("load", function () {
 			setTimeout(hideURLbar, 0);
 		}, false);
 
@@ -53,7 +54,6 @@
 <a href="#home" class="scroll" id="toTop" style="display: block;"> <span id="toTopHover"
 																		 style="opacity: 1;"> </span></a>
 <!-- //smooth scrolling -->
-<script type="text/javascript" src="{{URL::asset('js/jquery-2.1.4.min.js')}}"></script>
 <script type="text/javascript" src="{{URL::asset('js/numscroller-1.0.js')}}"></script>
 <script src="{{URL::asset('js/particles.js')}}"></script>
 <script src="{{URL::asset('js/style.js')}}"></script>

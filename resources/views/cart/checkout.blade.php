@@ -9,11 +9,15 @@
         function remove(id) {
             document.getElementById("id_del").value = id;
             document.getElementById("remove_frm").submit();
+            shoe.cart.remove(id);
+            // shoe.reset();
         }
 
         function edit(id) {
             document.getElementById("id_edit").value = id;
-            document.getElementById('new_quantity').value = document.getElementById('quantity').value;
+            document.getElementById('new_quantity').value = $($('input[name=quantity]')[id]).val();
+            shoe.cart._items[id]._data.quantity = $($('input[name=quantity]')[id]).val() - 1;
+            shoe.cart.add(shoe.cart.items(id));
             document.getElementById("edit_frm").submit();
         }
 
@@ -44,13 +48,13 @@
     <script type="text/javascript">
         function check() {
             var name = document.getElementById('name').value;
-            console.log(name);
+            // console.log(name);
             var email = document.getElementById('email').value;
-            console.log(email);
+            // console.log(email);
             var phone = document.getElementById('phone').value;
-            console.log(phone);
+            // console.log(phone);
             var address = document.getElementById('address').value;
-            console.log(address);
+            // console.log(address);
 
             // name
             if (name == '') {
@@ -186,13 +190,13 @@
                                             </div>
                                             <div class="controls">
                                                 <label class="control-label">Ngày đặt tiệc</label>
-                                                <input class="form-control" name="date_order" type="text" value="@if($date_order != null) {{$date_order}} @else {{''}} @endif">
+                                                <input class="form-control" name="date_order" type="text" value="{{$date_order}}">
                                                 <span id="address_error"></span>
                                             </div>
 
                                             <div class="controls">
                                                 <label class="control-label">Giờ</label>
-                                                <input class="form-control" name="date_time" type="text" value="@if($time_order != null) {{$time_order}} @else {{''}} @endif">
+                                                <input class="form-control" name="date_time" type="text" value="{{$time_order}}">
                                                 <span id="address_error"></span>
                                             </div>
 

@@ -2275,12 +2275,12 @@
 
             if (!this._total) {
                 result = this.get('quantity') * this.amount();
-                console.log(result);
+                // console.log(result);
                 result -= this.discount();
 
                 this._total = parser.amount(result);
-                console.log(this._total)
-                console.log(config)
+                // console.log(this._total)
+                // console.log(config)
             }
 
             return currency(this._total, config);
@@ -2498,7 +2498,7 @@
             if (showCode) {
                 result += ' ' + code;
             }
-            console.log(result)
+            // console.log(result)
             return result;
         };
 

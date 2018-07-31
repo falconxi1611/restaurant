@@ -87,9 +87,17 @@ class CartController extends Controller
         {
             $this->data['date_order'] = session('date');
         }
+        else
+        {
+            $this->data['date_order'] = '';
+        }
         if (session('time') != null)
         {
             $this->data['time_order'] = session('time');
+        }
+        else
+        {
+            $this->data['time_order'] = '';
         }
 
 
@@ -106,6 +114,7 @@ class CartController extends Controller
         $people_num = $request->input('people_num');
         $amount     = $request->input('amount');
 
+
         array_splice($id_menu, $id_del, 1);
         array_splice($cart_name, $id_del, 1);
         array_splice($image, $id_del, 1);
@@ -120,6 +129,22 @@ class CartController extends Controller
         $this->data['image']      = $image;
         $this->data['total']      = count($cart_name);
         $this->data['people_num'] = $people_num;
+        if (session('date') != null)
+        {
+            $this->data['date_order'] = session('date');
+        }
+        else
+        {
+            $this->data['date_order'] = '';
+        }
+        if (session('time') != null)
+        {
+            $this->data['time_order'] = session('time');
+        }
+        else
+        {
+            $this->data['time_order'] = '';
+        }
 
         $total_amount = 0;
         for ($i = 0; $i < count($amount); $i++)
@@ -161,6 +186,22 @@ class CartController extends Controller
         $this->data['total']        = count($cart_name);
         $this->data['people_num']   = $people_num;
         $this->data['total_amount'] = $total_amount;
+        if (session('date') != null)
+        {
+            $this->data['date_order'] = session('date');
+        }
+        else
+        {
+            $this->data['date_order'] = '';
+        }
+        if (session('time') != null)
+        {
+            $this->data['time_order'] = session('time');
+        }
+        else
+        {
+            $this->data['time_order'] = '';
+        }
 
         return view('cart/checkout', $this->data);
     }
@@ -230,7 +271,11 @@ class CartController extends Controller
             $cus->POINT         = $point_new;
             $cus->save();
         }
-
+        $status = 0;
+        if ($deposit == $total_amount)
+        {
+            $status = 1;
+        }
         //Insert ORDER
         $id_cus = Customer_Info::where('EMAIL', $email)->get();
         foreach ($id_cus as $cus)
@@ -261,6 +306,7 @@ class CartController extends Controller
         $order->DISCOUNT           = $discount;
         $order->DEPOSIT            = $deposit;
         $order->REST_MONEY         = ($total_amount - $discount - $deposit);
+        $order->STATUS             = $status;
         $order->REMARK             = $remark;
         $order->save();
 
@@ -280,6 +326,8 @@ class CartController extends Controller
                 $id++;
             }
         }
+        $request->session()->flush();
+
 
         return view('success');
     }

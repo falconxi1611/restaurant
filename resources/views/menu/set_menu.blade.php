@@ -225,13 +225,13 @@
 
 													<div class="info-product-price">
 														<div class="grid_meta">
-															<div class="product_price">
-																<div class="grid-price ">
-																	<span class="money ">{{number_format($menu->COST)}}
+															<div class="product_price" align="right">
+																<div class="grid-price">
+																	<span class="money">{{number_format($menu->COST)}}
 																		VND</span>
 																</div>
 															</div>
-															<ul class="stars1">
+															<ul class="stars1" align="center">
 																<li><a href="#"><i class="fa fa-star"
 																				   aria-hidden="true"></i></a></li>
 																<li><a href="#"><i class="fa fa-star"
@@ -259,10 +259,6 @@
                                                                 <input type="hidden" name="quantity" value="1">
 																<input type="hidden" name="num_table" value="">
                                                                 <input type="hidden" name="_token" id="csrf-token" value="{{csrf_token()}}">
-																<button type="submit" class="shoe-cart pshoe-cart"><i
-																			class="fa fa-cart-plus"
-																			aria-hidden="true"></i>
-																</button>
 
 																<a href="#" data-toggle="modal"
 																   data-target="#myModal1"></a>
