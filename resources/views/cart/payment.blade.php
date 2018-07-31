@@ -9,6 +9,10 @@
             function paypal() {
                 document.getElementById("paypal_frm").submit();
             }
+
+            function deletecart() {
+                shoe.reset();
+            }
         </script>
         <!-- top Products -->
         <div class="ads-grid_shop">
@@ -31,6 +35,7 @@
                                             <h5>THANH TOÁN TRỰC TIẾP TẠI NHÀ HÀNG</h5>
                                             <div class="checkbox">
                                                 <form action="/pay" method="post">
+                                                    <input type="hidden" name="payment_method" value="1">
                                                     <div class="check_box_one cashon_delivery">
                                                         <label class="anim">
                                                             <li>Quý khách thanh toán tại nhà hàng trong vòng 24h</li>
@@ -53,7 +58,7 @@
                                                             <input type="text" name="code" value=0 placeholder="Nhập mã code">
                                                     </div>
                                                     @csrf
-                                                    <input type="submit" value="XÁC NHẬN THANH TOÁN">
+                                                    <input type="submit" value="XÁC NHẬN THANH TOÁN" onclick="deletecart()">
                                                 </form>
                                             </div>
                                         </div>
@@ -63,7 +68,8 @@
                                 <!--//tab_one-->
                                 <div class="tab2">
                                     <div class="pay_info">
-                                        <form action="#" method="post" class="creditly-card-form agileinfo_form">
+                                        <form action="/pay" method="post" class="creditly-card-form agileinfo_form">
+                                            <input type="hidden" name="payment_method" value="2">
                                             <section class="creditly-wrapper wthree, w3_agileits_wrapper">
                                                 <div class="credit-card-wrapper">
                                                     <div class="first-row form-group">
@@ -126,7 +132,8 @@
                                                                    required="">
                                                         </form>
                                                     </div>
-                                                    <button class="submit"><span>Xác nhận thanh toán </span></button>
+                                                    @csrf
+                                                    <button class="submit" onclick="deletecart()"><span>Xác nhận thanh toán </span></button>
                                                 </div>
                                             </section>
                                         </form>
@@ -143,6 +150,7 @@
                                         </div>
                                         <form id="paypal_frm" action="https://www.sandbox.paypal.com/cgi-bin/webscr"
                                               method="post">
+                                            {{--<input type="hidden" name="payment_method" value="1">--}}
                                             <!-- Nhập địa chỉ email người nhận tiền (người bán) -->
                                             <input type="hidden" name="business" value="ductoanle1611@gmail.com">
 
@@ -150,27 +158,25 @@
                                             <input type="hidden" name="cmd" value="_xclick">
 
                                             <!-- Thông tin mua hàng. -->
-                                            <input type="hidden" name="item_name" value="HoaDonMuaHang">
+                                            <input type="hidden" name="item_name" value="Thanh Toan Don Hang - Nha Hang FoodParadise">
                                             <!--Trị giá của giỏ hàng, vì paypal không hỗ trợ tiền việt n    ên phải đổi ra tiền $-->
                                             <div style="margin-bottom: 50px">
                                                 <label class="radio-inline">
-                                                    <input type="radio" name="deposit" value="{{$total_amount*0.5}}" checked>Thanh toán trước
+                                                    <input type="radio" name="amount" value="{{($total_amount*0.5)/23325}}" checked>Thanh toán trước
                                                     50%
                                                 </label>
                                                 <label class="radio-inline">
-                                                    <input type="radio" name="deposit" value="{{$total_amount}}">Thanh toán 100%
+                                                    <input type="radio" name="amount" value="{{$total_amount/23325}}">Thanh toán 100%
                                                 </label>
                                             </div>
-                                            Nhập số tiền hóa đơn : <input type="number" name="amount"
-                                                                          placeholder="Nhập số tiền vào" value="">
                                             <!--Loại tiền-->
                                             <input type="hidden" name="currency_code" value="USD">
                                             <!--Đường link mình cung cấp cho Paypal biết để sau khi xử lí thành công nó sẽ chuyển về theo đường link này-->
                                             <input type="hidden" name="return"
-                                                   value="http://localhost/demothanhtoanonline/thanhcong.html">
+                                                   value="/sucess">
                                             <!--Đường link mình cung cấp cho Paypal biết để nếu  xử lí KHÔNG thành công nó sẽ chuyển về theo đường link này-->
                                             <input type="hidden" name="cancel_return"
-                                                   value="http://localhost/demothanhtoanonline/loi.html">
+                                                   value="/errors/error">
                                             <!-- Nút bấm. -->
                                             <div class="description">
                                                 <h5>CODE GIẢM GIÁ</h5>

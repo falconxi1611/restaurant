@@ -156,6 +156,36 @@ class CartController extends Controller
         return view('cart/checkout', $this->data);
     }
 
+    public function removeall(Request $request)
+    {
+        $this->data['total']        = 0;
+        $this->data['id_menu']      = array();
+        $this->data['cart_name']    = array();
+        $this->data['quantity']     = array();
+        $this->data['amount']       = array();
+        $this->data['image']        = array();
+        $this->data['people_num']   = array();
+        $this->data['total_amount'] = 0;
+        if (session('date') != null)
+        {
+            $this->data['date_order'] = session('date');
+        }
+        else
+        {
+            $this->data['date_order'] = '';
+        }
+        if (session('time') != null)
+        {
+            $this->data['time_order'] = session('time');
+        }
+        else
+        {
+            $this->data['time_order'] = '';
+        }
+
+        return view('cart/checkout', $this->data);
+    }
+
     public function edit(Request $request)
     {
         $id_edit      = $request->input('id_edit');
@@ -218,9 +248,10 @@ class CartController extends Controller
 
     public function add(Request $request)
     {
-        $deposit    = $request->input('deposit');
-        $discount   = 0;
-        $num_people = session('num_people');
+        $deposit        = $request->input('deposit');
+        $payment_method = $request->input('payment_method');
+        $discount       = 0;
+        $num_people     = session('num_people');
 
         if (session('input')['fullname'] != null)
         {
@@ -237,6 +268,14 @@ class CartController extends Controller
         if (session('input')['address'] != null)
         {
             $address = session('input')['address'];
+        }
+        if (session('input')['date_order'] != null)
+        {
+            $date_order = session('input')['date_order'];
+        }
+        if (session('input')['date_time'] != null)
+        {
+            $date_time = session('input')['date_time'];
         }
         $remark = session('input')['address'];
 
@@ -301,11 +340,12 @@ class CartController extends Controller
         $order->NUMBER_OF_TABLE    = $quantity_table;
         $order->NUMBER_OF_CUSTOMER = $num_people;
         $order->ORDER_DATE         = $date_order;
-        $order->TIME_DATE          = session('time');
+        $order->TIME_DATE          = $date_time;
         $order->TOTAL_AMOUNT       = $total_amount;
         $order->DISCOUNT           = $discount;
         $order->DEPOSIT            = $deposit;
         $order->REST_MONEY         = ($total_amount - $discount - $deposit);
+        $order->PAYMENT_METHOD     = $payment_method;
         $order->STATUS             = $status;
         $order->REMARK             = $remark;
         $order->save();

@@ -6,11 +6,15 @@
 @section('main_content')
 
     <script type="text/javascript">
+        function removeall() {
+            document.getElementById("frm_removeall").submit();
+            shoe.reset();
+        }
+
         function remove(id) {
             document.getElementById("id_del").value = id;
             document.getElementById("remove_frm").submit();
             shoe.cart.remove(id);
-            // shoe.reset();
         }
 
         function edit(id) {
@@ -238,9 +242,12 @@
                                     </div>
                                 </section>
                             </form>
+                            <form id="frm_removeall" action="/checkout_all" method="POST">
                             <div class="checkout-right-basket">
-                                <a href="payment.html">Make a Payment </a>
+                                @csrf
+                                <button type="submit" class="submit check_out" onclick="removeall()">Hủy Đặt Tiệc</button>
                             </div>
+                            </form>
                         </div>
                         {{--Remove--}}
                         <form id="remove_frm" action="/checkout_remove" method="post">

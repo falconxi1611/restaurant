@@ -220,13 +220,12 @@
 												<span class="product-new-top">New</span>
 											</div>
 											<div class="item-info-product">
-												<h4>
-													<a href="/menu_id?menu_id={{$menu->ID}}">{{$menu->MENU_NAME}}</a>
-
+												<h4 style="margin-top: 10px">
+													<a href="/menu_id?menu_id={{$menu->ID}}">{{$menu->MENU_NAME}}</a></h4>
 													<div class="info-product-price">
 														<div class="grid_meta">
-															<div class="product_price" align="right">
-																<div class="grid-price">
+															<div class="product_price" >
+																<div class="grid-price" style="">
 																	<span class="money">{{number_format($menu->COST)}}
 																		VND</span>
 																</div>

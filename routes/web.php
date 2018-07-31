@@ -20,6 +20,8 @@ Route::post('/checkout', 'CartController@show');
 
 Route::post('/checkout_remove', 'CartController@remove');
 
+Route::post('/checkout_all', 'CartController@removeall');
+
 Route::post('/checkout_edit', 'CartController@edit');
 
 Route::post('/payment', 'CartController@payment');
@@ -42,8 +44,15 @@ Route::get('menu_id', 'MenuDetailController@showDetail');
 
 Route::get('/add', 'CartController@add');
 
-Route::get('/test', function (){
+Route::get('/success', function () {
+    return view('success');
+});
+Route::get('/test', function () {
     return view('cart/checkout');
+});
+
+Route::get('/login', function () {
+    return view('login/login');
 });
 
 Route::get('/code', function () {

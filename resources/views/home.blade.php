@@ -10,11 +10,7 @@
         <div class="banner-top">
             <div class="social-bnr-agileits">
                 <ul>
-                    <li><a href="#"><i class="glyphicon glyphicon-user" aria-hidden="true"></i></a></li>
-                    <li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
-                    <li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
-                    <li><a href="#"><i class="fa fa-google-plus" aria-hidden="true"></i></a></li>
-                    <li><a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
+                    <li><a href="{{URL::asset('/login')}}"><i class="glyphicon glyphicon-user" aria-hidden="true"></i></a></li>
                 </ul>
             </div>
             <div class="contact-bnr-w3-agile">
