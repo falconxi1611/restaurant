@@ -28,7 +28,7 @@
                                                 <input name="menutype_id" type="hidden" value="{{$menu->MENUTYPE_ID}}" >
                                                 <button type="submit" class="w3-button w3-block w3-hover-yellow">SET MENU</button>
                                             </form>
-                                            <form action="/">
+                                            <form action="{{url('option_menu')}}" method="GET">
                                                 <button class="w3-button w3-block w3-hover-yellow">CHỌN MÓN</button>
                                             </form>
                                         </div>

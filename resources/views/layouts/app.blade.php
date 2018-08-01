@@ -275,7 +275,6 @@
 <script type="text/javascript" src="{{URL::asset('js/creditly.js')}}"></script>
 <link rel="stylesheet" href="{{URL::asset('css/creditly.css')}}" type="text/css" media="all" />
 <!-- //end-smoth-scrolling -->
-<script type="text/javascript" src="js/bootstrap-3.1.1.min.js"></script>
 <script type="text/javascript" src="{{URL::asset('js/bootstrap-3.1.1.min.js')}}"></script>
 </body>
 </html>

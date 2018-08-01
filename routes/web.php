@@ -40,6 +40,8 @@ Route::post('/booking', 'MenuTypeController@bookTable');
 
 Route::get('/set_menu', 'MenuController@showList');
 
+Route::get('/option_menu', 'FoodController@showList');
+
 Route::get('menu_id', 'MenuDetailController@showDetail');
 
 Route::get('/add', 'CartController@add');
@@ -53,6 +55,9 @@ Route::get('/test', function () {
 
 Route::get('/login', function () {
     return view('login/login');
+});
+Route::get('/signup', function () {
+    return view('login/sign_up');
 });
 
 Route::get('/code', function () {

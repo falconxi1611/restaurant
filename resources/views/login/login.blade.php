@@ -3,11 +3,13 @@
 <!-- Head -->
 
 <head>
+    <link rel="shortcut icon" href="{{URL::asset('images/icon.png')}}">
     <title>Food Paradise || Login</title>
     <!-- Meta-Tags -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta charset="utf-8">
-    <meta name="keywords" content="Prime login Form a Responsive Web Template, Bootstrap Web Templates, Flat Web Templates, Android Compatible Web Template, Smartphone Compatible Web Template, Free Webdesigns for Nokia, Samsung, LG, Sony Ericsson, Motorola Web Design">
+    <meta name="keywords"
+          content="Prime login Form a Responsive Web Template, Bootstrap Web Templates, Flat Web Templates, Android Compatible Web Template, Smartphone Compatible Web Template, Free Webdesigns for Nokia, Samsung, LG, Sony Ericsson, Motorola Web Design">
     <script>
         addEventListener("load", function () {
             setTimeout(hideURLbar, 0);
@@ -67,7 +69,7 @@
                 <!-- //script for show password -->
             </div>
             <div class="wthree-field">
-                <input id="saveForm" name="saveForm" type="submit" value="sign in" />
+                <input id="saveForm" name="saveForm" type="submit" value="sign in"/>
             </div>
             <ul class="list-login">
                 <li class="switch-agileits">
@@ -80,14 +82,17 @@
                 <li>
                     <a href="#" class="text-right">forgot password?</a>
                 </li>
+                <li>
+                    <a href="{{URL::asset('/signup')}}" class="text-right">Register new account</a>
+                </li>
                 <li class="clearfix"></li>
             </ul>
         </form>
     </div>
 </div>
 <div class="copyright text-center">
-    <p>© 2018 Prime login Form. All rights reserved | Design by
-        <a href="http://w3layouts.com">W3layouts</a>
+    <p>&copy; 2018 Food Paradise . Developed by |
+        <a href="https://www.facebook.com/falconxi1611" target="_blank"> Le Duc Toan</a>
     </p>
 </div>
 </body>

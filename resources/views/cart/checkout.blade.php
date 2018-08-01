@@ -169,7 +169,7 @@
                                                 <label class="control-label">Họ Tên </label>
                                                 <input class="billing-address-name form-control" id="fullname" type="text"
                                                        name="fullname"
-                                                       placeholder="Nhập họ tên">
+                                                       placeholder="Nhập họ tên" required="">
                                                 <span id="name_error"></span>
                                             </div>
                                             <div class="card_number_grids">

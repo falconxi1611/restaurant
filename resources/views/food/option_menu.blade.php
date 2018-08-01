@@ -204,15 +204,15 @@
 
 						<!-- product-sec1 -->
 						<div class="product-sec1">
-							@foreach($list_menu as $menu)
+							{{--@foreach($list_menu as $menu)--}}
 								<div class="col-md-4 product-men">
 									<div class="product-shoe-info shoe">
 										<div class="men-pro-item">
 											<div class="men-thumb-item">
-												<img width="254.578" height="179" src="{{asset("images/menu/$menu->IMAGE") }}" alt="">
+												<img width="254.578" height="179" src="../public/images/menu/menu1.jpg" alt="">
 												<div class="men-cart-pro">
 													<div class="inner-men-cart-pro">
-														<a href="/menu_id?menu_id={{$menu->ID}}" class="link-product-add-cart">Xem
+														<a href="/food_id?food_id=$food->id" class="link-product-add-cart">Xem
 															Chi
 															Tiết</a>
 													</div>
@@ -221,16 +221,16 @@
 											</div>
 											<div class="item-info-product">
 												<h4 style="margin-top: 10px">
-													<a href="/menu_id?menu_id={{$menu->ID}}">{{$menu->MENU_NAME}}</a></h4>
+													<a href="/food_id?food_id=$food->id">FOOD NAME</a></h4>
 													<div class="info-product-price">
-														<div class="grid_meta" style="padding-left: 60px">
+														<div class="grid_meta">
 															<div class="product_price" >
 																<div class="grid-price" style="">
-																	<span class="money">{{number_format($menu->COST)}}
+																	<span class="money">120000
 																		VND</span>
 																</div>
 															</div>
-															<ul class="stars1" align="center">
+															<ul class="stars1">
 																<li><a href="#"><i class="fa fa-star"
 																				   aria-hidden="true"></i></a></li>
 																<li><a href="#"><i class="fa fa-star"
@@ -247,17 +247,18 @@
 															<form action="#" method="post">
 																<input type="hidden" name="cmd" value="_cart">
 																<input type="hidden" name="add" value="1">
-																<input type="hidden" name="id_menu" value="{{$menu->ID}}">
+																<input type="hidden" name="id_menu" value="MENU_ID_OPTION">
 																<input type="hidden" name="shoe_item"
-																	   value="{{$menu->MENU_NAME}}">
+																	   value="FOOD_NAME">
                                                                 <input type="hidden" name="image"
-                                                                       value="{{$menu->IMAGE}}">
+                                                                       value="FOOD_IMAGE">
 																<input type="hidden" name="amount"
-																	   value="{{$menu->COST}}">
-																<input type="hidden" name="people_num" value="Bàn 10 người">
+																	   value="FOOD_COST">
+																<input type="hidden" name="people_num" value="Ban 10ng ??">
                                                                 <input type="hidden" name="quantity" value="1">
 																<input type="hidden" name="num_table" value="">
                                                                 <input type="hidden" name="_token" id="csrf-token" value="{{csrf_token()}}">
+																<button type="submit" class="shoe-cart pshoe-cart"><i class="fa fa-cart-plus" aria-hidden="true"></i></button>
 
 																<a href="#" data-toggle="modal"
 																   data-target="#myModal1"></a>
@@ -270,7 +271,7 @@
 										</div>
 									</div>
 								</div>
-							@endforeach
+							{{--@endforeach--}}
 						<!-- //mens -->
 							<div class="clearfix"></div>
 
