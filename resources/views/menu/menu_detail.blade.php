@@ -46,9 +46,9 @@
 
                             <ul class="slides">
                                 @foreach ($food_list as $food)
-                                    <li data-thumb="{{asset("images/food/$food->IMAGE")}}">
+                                    <li data-thumb="{{asset("images/menu/$food->IMAGE")}}">
                                         <div class="thumb-image">
-                                            <img src="{{asset("images/food/$food->IMAGE")}}"
+                                            <img src="{{asset("images/menu/$food->IMAGE")}}"
                                                  data-imagezoom="true"
                                                  class="img-responsive">
                                             <div>
@@ -233,6 +233,7 @@
                                                            value="{{'Dịch vụ kèm theo'}}">
                                                     <input type="hidden" name="quantity" value="1">
                                                     <input type="hidden" name="num_table" value="">
+                                                    <input type="hidden" name="mode" value="setmenu">
                                                     <input type="hidden" name="_token" id="csrf-token"
                                                            value="{{csrf_token()}}">
                                                     <button type="submit" class="shoe-cart pshoe-cart"><i

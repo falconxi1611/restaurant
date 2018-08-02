@@ -19,6 +19,16 @@ class CartController extends Controller
 {
     public function show(Request $request)
     {
+        $mode = $request->input("mode");
+        if ($mode == "option")
+        {
+            session(['mode' => "option"]);
+            $this->data["mode"] = 1;
+        }
+        else
+        {
+            $this->data["mode"] = 0;
+        }
         $totalCart    = count($request->input());
         $id_menu      = array();
         $cart_name    = array();
@@ -238,9 +248,24 @@ class CartController extends Controller
 
     public function payment(Request $request)
     {
-        $total_amount = $request->input('total_amount');
         $input        = $request->input();
         session(['input' => $input]);
+        //TODO FIX function: truong hop set menu
+        if(session('mode') == "options")
+        {
+            session(['num_people' => $request->input('num_people')]);
+            $cnt = count(session('input')['quantity_table']);
+            for ($i = 0; $i < $cnt; $i++)
+            {
+                //TODO: Fix value
+                session('input')['quantity_table'][$i] = 10;
+            }
+        }
+        ;
+//        echo "<pre>"; var_dump($request->input()); echo "</pre>"; die;
+        $total_amount = $request->input('total_amount');
+
+
         $this->data['total_amount'] = $total_amount;
 
         return view('cart/payment', $this->data);

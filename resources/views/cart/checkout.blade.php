@@ -49,45 +49,6 @@
 
     </script>
 
-    <script type="text/javascript">
-        function check() {
-            var name = document.getElementById('name').value;
-            // console.log(name);
-            var email = document.getElementById('email').value;
-            // console.log(email);
-            var phone = document.getElementById('phone').value;
-            // console.log(phone);
-            var address = document.getElementById('address').value;
-            // console.log(address);
-
-            // name
-            if (name == '') {
-                document.getElementById("name_error").innerHTML = 'Vui lòng nhập tên';
-            }
-            else {
-                document.getElementById("name_error").innerHTML = '';
-            }
-
-            // email
-            if (email == '') {
-                document.getElementById("email_error").innerHTML = 'Vui lòng nhập tên';
-            }
-            else {
-                document.getElementById("email_error").innerHTML = '';
-            }
-
-            // address
-            if (address == '') {
-                document.getElementById("address_error").innerHTML = 'Vui lòng nhập tên';
-            }
-            else {
-                document.getElementById("address_error").innerHTML = '';
-            }
-        }
-
-    </script>
-
-
     <div class="checkout_margin">
         {{--Check Out Content--}}
 
@@ -159,9 +120,19 @@
                             </ul>
                         </div>
                         <div class="col-md-8 address_form">
-                            <h4>Thông Tin Khách Hàng</h4>
                             <form id="payment_frm" action="/payment" method="post"
                                   class="creditly-card-form agileinfo_form">
+                                @if($mode == 1)
+                                <div class="controls">
+                                    <label class="control-label">Số người: </label>
+                                    <input class="billing-address-name form-control" id="num_people" type="text"
+                                           name="num_people"
+                                           placeholder="Nhập vào số lượng khách" required="">
+                                    <span id="name_error"></span>
+                                </div>
+                                @endif
+                                <h4>Thông Tin Khách Hàng</h4>
+
                                 <section class="creditly-wrapper wrapper">
                                     <div class="information-wrapper">
                                         <div class="first-row form-group">
@@ -177,7 +148,7 @@
                                                     <div class="controls">
                                                         <label class="control-label">Số điện thoại</label>
                                                         <input class="form-control" id="phone" name="phone" type="text"
-                                                               placeholder="Nhập SĐT">
+                                                               placeholder="Nhập SĐT" required="">
                                                         <span id="phone_error"></span>
                                                     </div>
                                                 </div>
@@ -186,7 +157,7 @@
                                                         <label class="control-label">Email </label>
                                                         <input class="form-control" id="email" type="email" id="email"
                                                                name="email"
-                                                               placeholder="Nhập email">
+                                                               placeholder="Nhập email" required="">
                                                         <span id="email_error"></span>
                                                     </div>
                                                 </div>
@@ -194,13 +165,15 @@
                                             </div>
                                             <div class="controls">
                                                 <label class="control-label">Ngày đặt tiệc</label>
-                                                <input class="form-control" name="date_order" type="text" value="{{$date_order}}">
+                                                <input class="form-control" id="datepicker1" name="date_order" type="text" value="{{$date_order}}"
+                                                       onfocus="this.value = '';"
+                                                       onblur="if (this.value == '') {this.value = 'yyyy-mm-dd';}" required="">
                                                 <span id="address_error"></span>
                                             </div>
 
                                             <div class="controls">
                                                 <label class="control-label">Giờ</label>
-                                                <input class="form-control" name="date_time" type="text" value="{{$time_order}}">
+                                                <input class="form-control" name="date_time" type="time" value="{{$time_order}}" required="">
                                                 <span id="address_error"></span>
                                             </div>
 

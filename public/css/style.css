@@ -523,7 +523,7 @@ label.icon-search span {
 .w3_navigation_pos h1 a {
     text-decoration: none;
     color: #faf8f7;
-    font-size: 39px;
+    font-size: 38px;
     left: 0.4em;
 }
 
@@ -2993,6 +2993,8 @@ h2.typoh2 {
 .copyright-wthree {
     background: #000;
     padding: 20px 0px;
+    position: absolute;
+    width: 100%;
 }
 
 .copyright-wthree p {
