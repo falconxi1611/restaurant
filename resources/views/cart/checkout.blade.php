@@ -47,6 +47,21 @@
 
         $("#validate").bind("click", validate);
 
+        function setValue(value) {
+            var num_people = document.getElementById("num_people").value;
+            var num_table;
+            if ((num_people % value) == 0) {
+                num_table = num_people / value;
+            }
+            else {
+                num_table = parseInt(num_people / value) + 1
+            }
+
+            // document.getElementById("option_quantity").value = num_table;
+            // document.getElementById("frm_option").submit();
+            document.getElementById("num_table").value = num_table;
+        }
+
     </script>
 
     <div class="checkout_margin">
@@ -86,7 +101,7 @@
                                                         src="{{asset("images/menu/$image[$i]")}}" alt=" "
                                                         class="img-responsive"></a>
                                         </td>
-                                        <td class="invert" width="200px"><input id="quantity" type="text"
+                                        <td class="invert" width="200px"><input type="text"
                                                                                 name="quantity"
                                                                                 style="text-align: center;width: 60px; height: 40px"
                                                                                 maxlength="3" value="{{$quantity[$i]}}"
@@ -123,13 +138,35 @@
                             <form id="payment_frm" action="/payment" method="post"
                                   class="creditly-card-form agileinfo_form">
                                 @if($mode == 1)
-                                <div class="controls">
-                                    <label class="control-label">Số người: </label>
-                                    <input class="billing-address-name form-control" id="num_people" type="text"
-                                           name="num_people"
-                                           placeholder="Nhập vào số lượng khách" required="">
-                                    <span id="name_error"></span>
-                                </div>
+                                    <div class="description">
+                                        <h5>SỐ NGƯỜI</h5>
+                                        <input class="form-control" type="text" id="num_people" name="num_people"
+                                               placeholder="Nhập vào số người"
+                                               required="" maxlength="4" value="{{$total_peo}}"
+                                               style="width: 200px; color: #000000">
+
+                                    </div>
+                                    <div class="size_menu">
+                                        <label class="radio-inline"><input type="radio" name="people" id='p1' value="8"
+                                                                           onclick="setValue(8)"
+                                            >Bàn
+                                            8
+                                            Người</label>
+                                        <label class="radio-inline"><input type="radio" name="people" id='p2'
+                                                                           value="10" onclick="setValue(10)">Bàn
+                                            10
+                                            Người</label>
+                                        <label class="radio-inline"><input type="radio" name="people" id='p3' value="12"
+                                                                           onclick="setValue(12)">Bàn
+                                            12
+                                            Người</label>
+                                    </div>
+                                    <div class="description">
+                                        <h5>SỐ BÀN</h5>
+                                        <input class="form-control" type="text" id="num_table" name="num_table"
+                                               required="" maxlength="3" style="width: 200px; color: #000000"
+                                               value="" readonly>
+                                    </div>
                                 @endif
                                 <h4>Thông Tin Khách Hàng</h4>
 
@@ -138,7 +175,8 @@
                                         <div class="first-row form-group">
                                             <div class="controls">
                                                 <label class="control-label">Họ Tên </label>
-                                                <input class="billing-address-name form-control" id="fullname" type="text"
+                                                <input class="billing-address-name form-control" id="fullname"
+                                                       type="text"
                                                        name="fullname"
                                                        placeholder="Nhập họ tên" required="">
                                                 <span id="name_error"></span>
@@ -165,15 +203,19 @@
                                             </div>
                                             <div class="controls">
                                                 <label class="control-label">Ngày đặt tiệc</label>
-                                                <input class="form-control" id="datepicker1" name="date_order" type="text" value="{{$date_order}}"
+                                                <input class="form-control" id="datepicker1" name="date_order"
+                                                       type="text" value="{{$date_order}}"
                                                        onfocus="this.value = '';"
-                                                       onblur="if (this.value == '') {this.value = 'yyyy-mm-dd';}" required="">
+                                                       onblur="if (this.value == '') {this.value = 'yyyy-mm-dd';}"
+                                                       required="">
+                                                {{--<input class="form-control" name="date"  type="date" value="{{$date_order}}" required="">--}}
                                                 <span id="address_error"></span>
                                             </div>
 
                                             <div class="controls">
                                                 <label class="control-label">Giờ</label>
-                                                <input class="form-control" name="date_time" type="time" value="{{$time_order}}" required="">
+                                                <input class="form-control" name="date_time" type="time"
+                                                       value="{{$time_order}}" required="">
                                                 <span id="address_error"></span>
                                             </div>
 
@@ -211,15 +253,17 @@
                                             <input type="hidden" name="total_amount" value="{{$total_amount}}">
                                             @csrf
                                         </div>
-                                        <button type="submit" class="submit check_out" onclick="check()">Thanh toán</button>
+                                        <button type="submit" class="submit check_out" onclick="check()">Thanh toán
+                                        </button>
                                     </div>
                                 </section>
                             </form>
                             <form id="frm_removeall" action="/checkout_all" method="POST">
-                            <div class="checkout-right-basket">
-                                @csrf
-                                <button type="submit" class="submit check_out" onclick="removeall()">Hủy Đặt Tiệc</button>
-                            </div>
+                                <div class="checkout-right-basket">
+                                    @csrf
+                                    <button type="submit" class="submit check_out" onclick="removeall()">Hủy Đặt Tiệc
+                                    </button>
+                                </div>
                             </form>
                         </div>
                         {{--Remove--}}
@@ -285,6 +329,37 @@
                             @endforeach
                             @csrf
                         </form>
+
+                        <form id="frm_option" method="post" action="">
+
+                            <input type="hidden" id="option_quantity" name="option_quantity" value="">
+                            @foreach($id_menu as $id)
+                                <input type="hidden" name="id_menu[]"
+                                       value="{{$id}}">
+                            @endforeach
+                            @foreach($cart_name as $name)
+                                <input type="hidden" name="name[]"
+                                       value="{{$name}}">
+                            @endforeach
+                            @foreach($image as $img)
+                                <input type="hidden" name="image[]"
+                                       value="{{$img}}">
+                            @endforeach
+                            @foreach($quantity as $num)
+                                <input type="hidden" name="quantity[]"
+                                       value="{{$num}}">
+                            @endforeach
+                            @foreach($people_num as $peo_num)
+                                <input type="hidden" name="people_num[]"
+                                       value="{{$peo_num}}">
+                            @endforeach
+                            @foreach($amount as $price)
+                                <input type="hidden" name="amount[]"
+                                       value="{{$price}}">
+                            @endforeach
+                            @csrf
+                        </form>
+
                         <div class="clearfix"></div>
 
 

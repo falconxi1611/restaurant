@@ -36,7 +36,7 @@
         </SCRIPT>
 
 
-        <div class="checkout_margin" style="width: 100%; height: 100%">
+        <div class="checkout_margin" style="width: 100%; height: 100%; background: {{URL::asset('images/success.jpg')}}" >
             {{--Check Out Content--}}
             <div class="alert alert-success" role="alert">
                 <h3>Thành Công !</h3> Quý khách vui lòng check mail đơn hàng

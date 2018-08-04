@@ -210,7 +210,7 @@
                                                         <form action="#" method="post">
                                                             <input type="hidden" name="cmd" value="_cart">
                                                             <input type="hidden" name="add" value="1">
-                                                            <input type="hidden" name="id_menu" value="{{$id}}">
+                                                            <input type="hidden" name="id_menu" value="{{$fd->FOOD_ID}}">
                                                             <input type="hidden" name="shoe_item"
                                                                    value="{{$fd->FOOD_NAME}}">
                                                             <input type="hidden" name="image"

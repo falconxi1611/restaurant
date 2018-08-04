@@ -16,7 +16,7 @@ class MenuTypeController extends Controller
 {
     public function showView()
     {
-        $list_type               = Menu_Type::all();
+        $list_type               = Menu_Type::whereIn('MENUTYPE_ID', array(1,2,3))->get();
         $this->data['menu_type'] = $list_type;
         if ($list_type === null)
         {

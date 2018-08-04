@@ -223,7 +223,7 @@
 												<h4 style="margin-top: 10px">
 													<a href="/menu_id?menu_id={{$menu->ID}}">{{$menu->MENU_NAME}}</a></h4>
 													<div class="info-product-price">
-														<div class="grid_meta" style="padding-left: 60px">
+														<div class="grid_meta" style="padding-left: 50px">
 															<div class="product_price" >
 																<div class="grid-price" style="">
 																	<span class="money">{{number_format($menu->COST)}}

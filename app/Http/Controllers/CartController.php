@@ -9,9 +9,12 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use App\Menu_Detail;
 use Illuminate\Http\Request;
 use Cart;
 use App\Order;
+use App\Menu_Type;
+use App\Menu;
 use App\Customer_Info;
 use App\Service_Detail;
 
@@ -19,6 +22,10 @@ class CartController extends Controller
 {
     public function show(Request $request)
     {
+//        if($request->input('option_quantity') != null)
+//        {
+//            $num_option = $request->input('option_quantity');
+//        }
         $mode = $request->input("mode");
         if ($mode == "option")
         {
@@ -110,12 +117,31 @@ class CartController extends Controller
             $this->data['time_order'] = '';
         }
 
+        if (session('num_people') != null)
+        {
+            $this->data['total_peo'] = session('num_people');
+        }
+        else
+        {
+            $this->data['total_peo'] = '';
+        }
+
 
         return view('cart/checkout', $this->data);
     }
 
     public function remove(Request $request)
     {
+        $mode = $request->input("mode");
+        if ($mode == "option")
+        {
+            session(['mode' => "option"]);
+            $this->data["mode"] = 1;
+        }
+        else
+        {
+            $this->data["mode"] = 0;
+        }
         $id_del     = $request->input('id_del');
         $id_menu    = $request->input('id_menu');
         $cart_name  = $request->input('name');
@@ -168,6 +194,16 @@ class CartController extends Controller
 
     public function removeall(Request $request)
     {
+        $mode = $request->input("mode");
+        if ($mode == "option")
+        {
+            session(['mode' => "option"]);
+            $this->data["mode"] = 1;
+        }
+        else
+        {
+            $this->data["mode"] = 0;
+        }
         $this->data['total']        = 0;
         $this->data['id_menu']      = array();
         $this->data['cart_name']    = array();
@@ -198,6 +234,16 @@ class CartController extends Controller
 
     public function edit(Request $request)
     {
+        $mode = $request->input("mode");
+        if ($mode == "option")
+        {
+            session(['mode' => "option"]);
+            $this->data["mode"] = 1;
+        }
+        else
+        {
+            $this->data["mode"] = 0;
+        }
         $id_edit      = $request->input('id_edit');
         $new_quantity = $request->input('new_quantity');
         $id_menu      = $request->input('id_menu');
@@ -248,21 +294,24 @@ class CartController extends Controller
 
     public function payment(Request $request)
     {
-        $input        = $request->input();
-        session(['input' => $input]);
-        //TODO FIX function: truong hop set menu
-        if(session('mode') == "options")
+
+        $id_menu = Menu_Type::orderBy('MENUTYPE_ID', 'DESC')->get(['MENUTYPE_ID'])->first();
+        $id      = json_decode($id_menu);
+        $id      = $id->MENUTYPE_ID;
+
+        $input = $request->input();
+
+        if (session('mode') == "option")
         {
-            session(['num_people' => $request->input('num_people')]);
-            $cnt = count(session('input')['quantity_table']);
-            for ($i = 0; $i < $cnt; $i++)
+            $iTotal = count($input['quantity_table']);
+            for ($i = 0; $i < $iTotal; $i++)
             {
-                //TODO: Fix value
-                session('input')['quantity_table'][$i] = 10;
+                $input['quantity_table'][$i] = $request->input('num_table');
             }
+
+            session(['num_people' => $request->input('num_people')]);
         }
-        ;
-//        echo "<pre>"; var_dump($request->input()); echo "</pre>"; die;
+        session(['input' => $input]);
         $total_amount = $request->input('total_amount');
 
 
@@ -273,6 +322,7 @@ class CartController extends Controller
 
     public function add(Request $request)
     {
+        $mode           = session('mode');
         $deposit        = $request->input('deposit');
         $payment_method = $request->input('payment_method');
         $discount       = 0;
@@ -310,7 +360,7 @@ class CartController extends Controller
         $quantity_table = session('input')['quantity_table'];
 
         $total_amount = session('input')['total_amount'];
-        $date_order   = date('Y-m-d', strtotime(session('date')));
+        $date_order   = date('Y-m-d', strtotime($date_order));
 
         //Insert Customer Info
         $email_flg = Customer_Info::where('EMAIL', $email)->get(['EMAIL']);
@@ -340,30 +390,76 @@ class CartController extends Controller
         {
             $status = 1;
         }
+
+        if ($mode == 'option')
+        {
+            $cus_id = Customer_Info::orderBy('CUSTOMER_ID', 'DESC')->get(['CUSTOMER_ID'])->first();
+            $cus_id = json_decode($cus_id);
+            $id_cus = $cus_id->CUSTOMER_ID;
+            //Insert New menu
+            $new_menu              = new Menu;
+            $new_menu->MENU_NAME   = "Menu tự chọn";
+            $new_menu->MENUTYPE_ID = 4;
+            $new_menu->CUSTOMER_ID = $id_cus;
+            $new_menu->DESCRIPTION = "Ngon";
+            $new_menu->IMAGE       = "unknown.jpg";
+            $new_menu->COST        = session('input')['total_amount'];
+            $new_menu->save();
+
+            //Inser MenuDetail
+            $arrIdFood = session('input')['id'];
+            $iTotalID  = count($arrIdFood);
+            for ($i = 0; $i < $iTotalID; $i++)
+            {
+                $menu_detail          = new Menu_Detail;
+                $menu_detail->MENU_ID = 4;
+                $menu_detail->FOOD_ID = $arrIdFood[$i];
+                $menu_detail->save();
+            }
+
+
+        }
+
+
         //Insert ORDER
         $id_cus = Customer_Info::where('EMAIL', $email)->get();
         foreach ($id_cus as $cus)
         {
             $id = $cus->CUSTOMER_ID;
         }
-
-        for ($i = 0; $i < count($cart_id); $i++)
+        if ($mode == 'option')
         {
-            if ($type[$i] != "Dịch vụ kèm theo")
+            $id_menu = Menu::orderBy('ID', 'DESC')->get(['ID'])->first();
+            $id_cart = json_decode($id_menu);
+            $id_cart = $id_cart->ID;
+            $id_cart = strval($id_cart);
+            for ($i = 0; $i < count($cart_id); $i++)
             {
-                $id_cart        = $cart_id[$i];
-                $quantity_table = $quantity_table[$i];
-                break;
+                if ($type[$i] != "Dịch vụ kèm theo")
+                {
+                    $quantity_table = $quantity_table[$i];
+                    break;
+                }
             }
         }
-
+        else
+        {
+            for ($i = 0; $i < count($cart_id); $i++)
+            {
+                if ($type[$i] != "Dịch vụ kèm theo")
+                {
+                    $id_cart        = $cart_id[$i];
+                    $quantity_table = $quantity_table[$i];
+                    break;
+                }
+            }
+        }
 //
         $order                     = new Order;
         $order->CUSTOMER_ID        = $id;
         $order->MENU_ID            = $id_cart;
-        $order->NUMBER_OF_CUSTOMER = $num_people;
-        $order->NUMBER_OF_TABLE    = $quantity_table;
-        $order->NUMBER_OF_CUSTOMER = $num_people;
+        $order->NUMBER_OF_CUSTOMER = (int)$num_people;
+        $order->NUMBER_OF_TABLE    = (int)$quantity_table;
         $order->ORDER_DATE         = $date_order;
         $order->TIME_DATE          = $date_time;
         $order->TOTAL_AMOUNT       = $total_amount;
@@ -375,7 +471,7 @@ class CartController extends Controller
         $order->REMARK             = $remark;
         $order->save();
 
-//       Insert SERVICE DETAIL
+        //Insert SERVICE DETAIL
         $id = Order::orderBy('ORDER_ID', 'DESC')->get(['ORDER_ID'])->first();
         $id = json_decode($id);
         $id = $id->ORDER_ID;
