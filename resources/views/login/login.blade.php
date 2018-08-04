@@ -36,7 +36,8 @@
 <h1 class="title-agile text-center">Food Paradise</h1>
 <div class="content-w3ls">
     <div class="content-bottom">
-        <form action="#" method="post">
+        <form action="{{route('getLogin')}}" method="post">
+            {{ csrf_field() }}
             <div class="field-group">
                 <span class="fa fa-user" aria-hidden="true"></span>
                 <div class="wthree-field">

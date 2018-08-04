@@ -47,9 +47,9 @@ Route::get('/success', function () {
     return view('success');
 });
 
-Route::get('/login', function () {
-    return view('login/login');
-});
+//Route::get('/login', function () {
+//    return view('login/login');
+//});
 Route::get('/signup', function () {
     return view('login/sign_up');
 });
@@ -76,3 +76,9 @@ Route::get('/read', function () {
     return $users;
 
 });
+
+//Login
+Auth::routes();
+Route::get('/login', 'LoginController@getLogin');
+Route::post('/login', 'LoginController@postLogin');
+
