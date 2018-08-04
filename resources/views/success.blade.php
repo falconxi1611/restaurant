@@ -36,10 +36,10 @@
         </script>
 
 
-        <div class="checkout_margin" style="width: 100%; height: 100%;" >
-        Check Out Content
+        <div class="checkout_margin" style="width: 90%; height: 200px; font-size: 22px" >
+
         <div class="alert alert-success" role="alert">
-        <h3>Thành Công !</h3> Quý khách vui lòng check mail đơn hàng
+        <h3 style="margin-bottom: 20px">Đặt Tiệc Thành Công !</h3> Quý khách vui lòng check mail đơn hàng
         <h6>Trang sẽ tự chuyển sau <span id="timecount"></span> giây!</h6>
         </div>
         </div>

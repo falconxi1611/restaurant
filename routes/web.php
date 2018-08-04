@@ -1,8 +1,5 @@
 <?php
 
-use App\Menu_Type;
-use App\Menu;
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -70,7 +67,7 @@ Route::get('/code', function () {
 });
 
 Route::get('/icon', function () {
-    return view('icon/icon');
+    return view('success');
 });
 
 
