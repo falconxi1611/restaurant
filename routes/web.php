@@ -49,9 +49,6 @@ Route::get('/add', 'CartController@add');
 Route::get('/success', function () {
     return view('success');
 });
-Route::get('/test', function () {
-    return view('cart/checkout');
-});
 
 Route::get('/login', function () {
     return view('login/login');

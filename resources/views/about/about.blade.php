@@ -14,8 +14,6 @@
             </div>
             <div class="contact-bnr-w3-agile">
                 <ul>
-                    <li><a href="#"><img src="{{URL::asset('images/VIE.png')}}" width="100%" height="100%"></a></li>
-                    <li><a href="#"><img src="{{URL::asset('images/ENG.png')}}" width="100%" height="100%"></a></li>
                     <li><i class="fa fa-envelope" aria-hidden="true"></i><a href="mailto:foodparadise@gmail.com">foodparadise@gmail.com</a>
                     </li>
                     <li><i class="fa fa-phone" aria-hidden="true"></i>+84 969 938 946</li>
