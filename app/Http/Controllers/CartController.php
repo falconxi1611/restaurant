@@ -17,11 +17,22 @@ use App\Menu_Type;
 use App\Menu;
 use App\Customer_Info;
 use App\Service_Detail;
+use Illuminate\Support\Facades\DB;
 
 class CartController extends Controller
 {
     public function show(Request $request)
     {
+        if(strlen(session('username')) != 0)
+        {
+            $this->data['flg_login'] = 1;
+            $avatar = DB::table('USER')->select('IMAGE')->where('USERNAME','=', session('username'))->get();
+            $this->data['avatar'] = $avatar[0]->IMAGE;
+        }
+        else
+        {
+            $this->data['flg_login'] = 0;
+        }
 //        if($request->input('option_quantity') != null)
 //        {
 //            $num_option = $request->input('option_quantity');
@@ -126,12 +137,22 @@ class CartController extends Controller
             $this->data['total_peo'] = '';
         }
 
-
         return view('cart/checkout', $this->data);
     }
 
     public function remove(Request $request)
     {
+        if(strlen(session('username')) != 0)
+        {
+            $this->data['flg_login'] = 1;
+            $avatar = DB::table('USER')->select('IMAGE')->where('USERNAME','=', session('username'))->get();
+            $this->data['avatar'] = $avatar[0]->IMAGE;
+        }
+        else
+        {
+            $this->data['flg_login'] = 0;
+        }
+
         $mode = $request->input("mode");
         if ($mode == "option")
         {
@@ -194,6 +215,17 @@ class CartController extends Controller
 
     public function removeall(Request $request)
     {
+        if(strlen(session('username')) != 0)
+        {
+            $this->data['flg_login'] = 1;
+            $avatar = DB::table('USER')->select('IMAGE')->where('USERNAME','=', session('username'))->get();
+            $this->data['avatar'] = $avatar[0]->IMAGE;
+        }
+        else
+        {
+            $this->data['flg_login'] = 0;
+        }
+
         $mode = $request->input("mode");
         if ($mode == "option")
         {
@@ -234,6 +266,17 @@ class CartController extends Controller
 
     public function edit(Request $request)
     {
+        if(strlen(session('username')) != 0)
+        {
+            $this->data['flg_login'] = 1;
+            $avatar = DB::table('USER')->select('IMAGE')->where('USERNAME','=', session('username'))->get();
+            $this->data['avatar'] = $avatar[0]->IMAGE;
+        }
+        else
+        {
+            $this->data['flg_login'] = 0;
+        }
+
         $mode = $request->input("mode");
         if ($mode == "option")
         {
@@ -294,6 +337,16 @@ class CartController extends Controller
 
     public function payment(Request $request)
     {
+        if(strlen(session('username')) != 0)
+        {
+            $this->data['flg_login'] = 1;
+            $avatar = DB::table('USER')->select('IMAGE')->where('USERNAME','=', session('username'))->get();
+            $this->data['avatar'] = $avatar[0]->IMAGE;
+        }
+        else
+        {
+            $this->data['flg_login'] = 0;
+        }
 
         $id_menu = Menu_Type::orderBy('MENUTYPE_ID', 'DESC')->get(['MENUTYPE_ID'])->first();
         $id      = json_decode($id_menu);
@@ -322,6 +375,17 @@ class CartController extends Controller
 
     public function add(Request $request)
     {
+        if(strlen(session('username')) != 0)
+        {
+            $this->data['flg_login'] = 1;
+            $avatar = DB::table('USER')->select('IMAGE')->where('USERNAME','=', session('username'))->get();
+            $this->data['avatar'] = $avatar[0]->IMAGE;
+        }
+        else
+        {
+            $this->data['flg_login'] = 0;
+        }
+
         $mode           = session('mode');
         $deposit        = $request->input('deposit');
         $payment_method = $request->input('payment_method');
@@ -491,5 +555,21 @@ class CartController extends Controller
 
 
         return view('success');
+    }
+
+    public function listorder()
+    {
+        if(strlen(session('username')) != 0)
+        {
+            $this->data['flg_login'] = 1;
+            $avatar = DB::table('USER')->select('IMAGE')->where('USERNAME','=', session('username'))->get();
+            $this->data['avatar'] = $avatar[0]->IMAGE;
+        }
+        else
+        {
+            $this->data['flg_login'] = 0;
+        }
+
+        return view("cart/listorder", $this->data);
     }
 }

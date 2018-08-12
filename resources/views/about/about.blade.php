@@ -7,10 +7,38 @@
     <div class="banner inner-bg-w3" id="home">
         <!-- header -->
         <div class="banner-top">
-            <div class="social-bnr-agileits">
-                <ul>
-                    <li><a href="{{URL::asset('/login')}}"><i class="glyphicon glyphicon-user" aria-hidden="true"></i></a></li>
-                </ul>
+            <div style="height: 50px; position: absolute;">
+                {{--If Not Login--}}
+                @if ($flg_login == 0)
+                    <div class="social-bnr-agileits">
+                        <ul>
+                            <li><a href="{{URL::asset('/login')}}"><i class="glyphicon glyphicon-user"
+                                                                      aria-hidden="true"></i></a></li>
+                        </ul>
+                    </div>
+                @else
+                    {{--If user login--}}
+                    <li class="second admin-pic">
+                        <ul>
+                            <li class="dropdown profile_details_drop">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                                    <div class="profile_img">
+                                        <span class="prfil-img">
+                                            @if(strlen($avatar) != 0)
+                                                <img src="{{asset("images/avatar/$avatar")}}" alt="">
+                                            @endif
+                                        </span>
+                                    </div>
+                                </a>
+                                <ul class="dropdown-menu drp-mnu">
+                                    <li><a href="/listorder"><i class="glyphicon glyphicon-shopping-cart"></i> Danh sách đơn hàng</a></li>
+                                    <li><a href="/userinfo"><i class="fa fa-user"></i> Thông tin</a></li>
+                                    <li><a href="/logout"><i class="fa fa-sign-out"></i> Đăng xuất</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                @endif
             </div>
             <div class="contact-bnr-w3-agile">
                 <ul>

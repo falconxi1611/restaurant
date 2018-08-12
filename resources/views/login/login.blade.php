@@ -34,20 +34,31 @@
 
 <body>
 <h1 class="title-agile text-center">Food Paradise</h1>
+@if($errors->has('errorlogin'))
+    <div class="alert alert-danger" align="center" style="color: #FFFFFF">
+        {{$errors->first('errorlogin')}}
+    </div>
+@endif
 <div class="content-w3ls">
     <div class="content-bottom">
-        <form action="{{route('getLogin')}}" method="post">
+        <form action="" method="post">
             {{ csrf_field() }}
             <div class="field-group">
                 <span class="fa fa-user" aria-hidden="true"></span>
                 <div class="wthree-field">
-                    <input name="text1" id="text1" type="text" value="" placeholder="username" required>
+                    <input name="username" id="username" type="text" value="" placeholder="username" required>
+                    @if($errors->has('username'))
+                        <p style="color:red">{{$errors->first('username')}}</p>
+                    @endif
                 </div>
             </div>
             <div class="field-group">
                 <span class="fa fa-lock" aria-hidden="true"></span>
                 <div class="wthree-field">
-                    <input name="password" id="myInput" type="Password" placeholder="password">
+                    <input name="password" id="myInput" type="Password" placeholder="password" required>
+                    @if($errors->has('password'))
+                        <p style="color:red">{{$errors->first('password')}}</p>
+                    @endif
                 </div>
             </div>
             <div class="field-group">

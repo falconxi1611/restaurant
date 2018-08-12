@@ -47,9 +47,9 @@ Route::get('/success', function () {
     return view('success');
 });
 
-//Route::get('/login', function () {
-//    return view('login/login');
-//});
+Route::get('/here', function () {
+    return view('login/login');
+});
 Route::get('/signup', function () {
     return view('login/sign_up');
 });
@@ -78,7 +78,10 @@ Route::get('/read', function () {
 });
 
 //Login
-Auth::routes();
+//Auth::routes();
 Route::get('/login', 'LoginController@getLogin');
+Route::get('/logout', 'LoginController@logout');
+Route::get('/listorder', 'CartController@listorder');
+Route::get('/userinfo', 'LoginController@userinfo');
 Route::post('/login', 'LoginController@postLogin');
 

@@ -17,6 +17,17 @@ class FoodController extends Controller
 {
     public function showList()
     {
+        if(strlen(session('username')) != 0)
+        {
+            $this->data['flg_login'] = 1;
+            $avatar = DB::table('USER')->select('IMAGE')->where('USERNAME','=', session('username'))->get();
+            $this->data['avatar'] = $avatar[0]->IMAGE;
+        }
+        else
+        {
+            $this->data['flg_login'] = 0;
+        }
+
         $food_list = DB::table('FOOD')
             ->where('SIZE','=', 1)
             ->where('DEL_FLG','=', 0)

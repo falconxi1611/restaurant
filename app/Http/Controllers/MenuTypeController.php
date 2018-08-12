@@ -11,6 +11,7 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use App\Menu_Type;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class MenuTypeController extends Controller
 {
@@ -22,11 +23,33 @@ class MenuTypeController extends Controller
         {
             return view('errors/error');
         }
+        if(strlen(session('username')) != 0)
+        {
+            $this->data['flg_login'] = 1;
+            $avatar = DB::table('USER')->select('IMAGE')->where('USERNAME','=', session('username'))->get();
+            $this->data['avatar'] = $avatar[0]->IMAGE;
+        }
+        else
+        {
+            $this->data['flg_login'] = 0;
+        }
+
         return view('menu/menu', $this->data);
     }
 
     public function bookTable(Request $request)
     {
+        if(strlen(session('username')) != 0)
+        {
+            $this->data['flg_login'] = 1;
+            $avatar = DB::table('USER')->select('IMAGE')->where('USERNAME','=', session('username'))->get();
+            $this->data['avatar'] = $avatar[0]->IMAGE;
+        }
+        else
+        {
+            $this->data['flg_login'] = 0;
+        }
+
         session(['time' => $request->input("time")]);
         session(['date' => $request->input("date")]);
         session(['num_people' => $request->input("quantity_people")]);

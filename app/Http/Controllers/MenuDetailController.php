@@ -15,11 +15,23 @@ use App\Menu;
 use App\Service;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class MenuDetailController extends Controller
 {
     public function showDetail(Request $request)
     {
+        if(strlen(session('username')) != 0)
+        {
+            $this->data['flg_login'] = 1;
+            $avatar = DB::table('USER')->select('IMAGE')->where('USERNAME','=', session('username'))->get();
+            $this->data['avatar'] = $avatar[0]->IMAGE;
+        }
+        else
+        {
+            $this->data['flg_login'] = 0;
+        }
+
         $quantity = session('num_people');
         if (strlen($quantity) != 0)
         {
@@ -59,6 +71,17 @@ class MenuDetailController extends Controller
 
     public function showPeople(Request $request)
     {
+        if(strlen(session('username')) != 0)
+        {
+            $this->data['flg_login'] = 1;
+            $avatar = DB::table('USER')->select('IMAGE')->where('USERNAME','=', session('username'))->get();
+            $this->data['avatar'] = $avatar[0]->IMAGE;
+        }
+        else
+        {
+            $this->data['flg_login'] = 0;
+        }
+
         $menu_id   = $request->input('ID');
         $food_list = Food::whereIn('FOOD_ID', Menu_Detail::where('MENU_ID', $menu_id)->get(['FOOD_ID']))->get();
         if ($food_list === null)
