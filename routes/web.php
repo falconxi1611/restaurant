@@ -58,9 +58,7 @@ Route::get('/code', function () {
     return view('code/code');
 });
 
-Route::get('/contact', function () {
-    return view('contact/contact');
-});
+Route::get('/contact', 'ContactController@contact');
 
 Route::get('/code', function () {
     return view('code/code');

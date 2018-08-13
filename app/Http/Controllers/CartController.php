@@ -570,6 +570,17 @@ class CartController extends Controller
             $this->data['flg_login'] = 0;
         }
 
+        $email = DB::table('USER')->select('EMAIL')
+            ->where('USERNAME', '=', session('username'))->get();
+
+        $customer_id = DB::table('CUSTOMER_INFO')->select('CUSTOMER_ID')
+            ->where('EMAIL', '=',  $email[0]->EMAIL)->get();
+
+        $arrOrder = DB::table('ORDER')->select('*')
+            ->where('CUSTOMER_ID', '=', $customer_id[0]->CUSTOMER_ID)->get();
+
+        $this->data['arrOrder'] = $arrOrder;
+
         return view("cart/listorder", $this->data);
     }
 }
